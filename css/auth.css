@@ -1,0 +1,117 @@
+/* ============================================================
+   9JA FURNITURE HUB — Auth Pages (Login & Sign Up)
+   ============================================================ */
+
+/* ── Auth Root Layout ─────────────────────────────────────── */
+.auth-root{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;}
+
+/* ── Left Visual Panel ───────────────────────────────────── */
+.auth-visual{background:linear-gradient(155deg,var(--mahogany) 0%,var(--mahogany-mid) 50%,var(--walnut) 100%);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:52px 56px;position:relative;overflow:hidden;}
+
+.auth-visual::before{content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%,rgba(212,147,10,.14) 0%,transparent 50%),
+    radial-gradient(circle at 80% 70%,rgba(160,82,45,.1) 0%,transparent 50%),
+    radial-gradient(circle at 60% 10%,rgba(245,200,66,.07) 0%,transparent 45%);
+  pointer-events:none;}
+
+/* Floating furniture symbols */
+.furniture-symbols{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.furn-sym{position:absolute;font-size:var(--fsize,3rem);
+  color:rgba(212,147,10,.1);animation:float var(--dur,5s) ease-in-out infinite;
+  animation-delay:var(--del,0s);}
+
+.auth-visual-brand{position:relative;z-index:1;}
+.auth-visual-brand a{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.auth-visual-logo{width:54px;height:54px;background:rgba(212,147,10,.22);
+  border:2px solid rgba(212,147,10,.4);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+.auth-visual-name{font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:-.01em;}
+.auth-visual-name small{display:block;font-size:.62rem;font-weight:700;
+  color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;margin-top:-2px;}
+
+.auth-visual-content{position:relative;z-index:1;}
+.auth-visual-badge{display:inline-flex;align-items:center;gap:6px;
+  background:rgba(212,147,10,.22);border:1px solid rgba(212,147,10,.36);
+  color:var(--gold-light);border-radius:50px;padding:7px 18px;
+  font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:28px;}
+
+.auth-visual-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:900;color:#fff;
+  line-height:1.18;font-family:var(--font-display);margin-bottom:22px;}
+.auth-visual-title span{color:var(--gold);}
+.auth-visual-desc{font-size:1rem;color:rgba(255,255,255,.68);line-height:1.78;max-width:400px;}
+
+/* Stats grid on visual */
+.auth-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;}
+.auth-stat-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:18px;}
+.auth-stat-box-num{font-size:1.8rem;font-weight:900;font-family:var(--font-display);line-height:1;}
+.auth-stat-box-label{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:4px;
+  font-weight:600;text-transform:uppercase;letter-spacing:.05em;}
+
+/* Features list */
+.auth-features{display:flex;flex-direction:column;gap:16px;margin-top:36px;}
+.auth-feature{display:flex;align-items:flex-start;gap:14px;}
+.auth-feature-icon{width:40px;height:40px;border-radius:10px;background:rgba(212,147,10,.18);
+  border:1px solid rgba(212,147,10,.28);display:flex;align-items:center;
+  justify-content:center;font-size:1rem;flex-shrink:0;}
+.auth-feature-text strong{display:block;font-size:.9rem;color:#fff;font-weight:700;}
+.auth-feature-text span{font-size:.82rem;color:rgba(255,255,255,.55);}
+
+/* Bottom strip */
+.auth-bottom-strip{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+.auth-bottom-strip span{font-size:.8rem;color:rgba(255,255,255,.45);}
+
+/* ── Right Form Panel ─────────────────────────────────────── */
+.auth-form-panel{display:flex;align-items:center;justify-content:center;
+  padding:52px 40px;background:var(--surface);overflow-y:auto;}
+.auth-form-box{width:100%;max-width:480px;}
+
+.auth-form-header{margin-bottom:36px;}
+.auth-form-header h2{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:800;color:var(--mahogany);margin-bottom:8px;}
+.auth-form-header p{font-size:.95rem;color:var(--text-soft);line-height:1.65;}
+.auth-form-header .badge{margin-bottom:12px;}
+
+/* Role cards */
+.role-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+.role-card{border:2px solid var(--border);border-radius:var(--radius-sm);
+  padding:16px 10px;text-align:center;cursor:pointer;transition:var(--transition);background:var(--surface);}
+.role-card:hover{border-color:var(--gold);background:var(--gold-pale);}
+.role-card.selected{border-color:var(--gold);background:rgba(212,147,10,.08);
+  box-shadow:0 0 0 3px rgba(212,147,10,.22);}
+.role-card-icon{font-size:1.6rem;margin-bottom:6px;}
+.role-card-label{font-size:.8rem;font-weight:700;color:var(--mahogany);}
+.role-card-sub{font-size:.7rem;color:var(--text-muted);margin-top:2px;}
+.role-card input[type="radio"]{display:none;}
+
+/* Password strength */
+.pw-strength{margin-top:8px;}
+.pw-strength-segs{display:flex;gap:4px;}
+.pw-strength-seg{height:4px;flex:1;border-radius:2px;background:var(--border);transition:background .3s;}
+.pw-strength-label{font-size:.75rem;font-weight:700;margin-top:5px;color:var(--text-muted);}
+
+/* Divider */
+.auth-divider{display:flex;align-items:center;gap:16px;margin:24px 0;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.auth-divider span{font-size:.82rem;color:var(--text-muted);white-space:nowrap;font-weight:600;}
+
+/* Social buttons */
+.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:12px;border:2px solid var(--border);border-radius:var(--radius-sm);
+  font-size:.9rem;font-weight:600;color:var(--text);background:var(--surface);
+  cursor:pointer;transition:var(--transition);}
+.social-btn:hover{border-color:var(--gold);background:var(--gold-pale);}
+
+/* Footer link */
+.auth-footer{margin-top:28px;text-align:center;font-size:.88rem;color:var(--text-muted);}
+.auth-footer a{color:var(--amber);font-weight:700;}
+.auth-footer a:hover{text-decoration:underline;}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media(max-width:900px){
+  .auth-root{grid-template-columns:1fr;}
+  .auth-visual{display:none;}
+  .auth-form-panel{padding:40px 24px;min-height:100vh;}
+}

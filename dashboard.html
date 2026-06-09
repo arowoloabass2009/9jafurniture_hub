@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>My Dashboard — 9ja Furniture Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/dashboard.css"/>
+</head>
+<body class="dashboard-root">
+
+<!-- ══════════════ SIDEBAR ════════════════════════════════ -->
+<aside class="dash-sidebar" id="sidebar">
+  <div class="dash-sidebar-brand">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+      <div class="dash-brand-logo">🪑</div>
+    </a>
+    <div class="dash-brand-name">9ja Furniture <span>Hub</span></div>
+    <div class="dash-brand-sub">Nigeria's Premier Marketplace</div>
+  </div>
+
+  <nav class="dash-nav">
+    <div class="dash-nav-section">
+      <div class="dash-nav-heading">Overview</div>
+      <div class="dash-nav-item active" onclick="showPanel('overview')">
+        <span class="dash-nav-icon">🏠</span> Dashboard
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('orders')">
+        <span class="dash-nav-icon">📦</span> My Orders
+        <span class="dash-nav-badge">3</span>
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('wishlist')">
+        <span class="dash-nav-icon">❤️</span> Wishlist
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('tracking')">
+        <span class="dash-nav-icon">🚚</span> Track Delivery
+      </div>
+    </div>
+
+    <div class="dash-nav-section">
+      <div class="dash-nav-heading">Shop by Category</div>
+      <div class="dash-nav-item" onclick="showPanel('home-cat')">
+        <span class="dash-nav-icon">🛋️</span> Home Furniture
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('office-cat')">
+        <span class="dash-nav-icon">🖥️</span> Office Furniture
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('kitchen-cat')">
+        <span class="dash-nav-icon">🍳</span> Kitchen Cabinets
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('custom')">
+        <span class="dash-nav-icon">📐</span> Custom Orders
+        <span class="dash-nav-badge">New</span>
+      </div>
+    </div>
+
+    <div class="dash-nav-section">
+      <div class="dash-nav-heading">By State</div>
+      <div class="dash-nav-item" onclick="filterByState('Lagos')">
+        <span class="dash-nav-icon">🌴</span> Lagos
+      </div>
+      <div class="dash-nav-item" onclick="filterByState('Abuja')">
+        <span class="dash-nav-icon">🏛️</span> Abuja (FCT)
+      </div>
+      <div class="dash-nav-item" onclick="filterByState('Kano')">
+        <span class="dash-nav-icon">🕌</span> Kano
+      </div>
+      <div class="dash-nav-item" onclick="filterByState('Port Harcourt')">
+        <span class="dash-nav-icon">⚓</span> Port Harcourt
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('all-states')">
+        <span class="dash-nav-icon">📍</span> All 36 States
+      </div>
+    </div>
+
+    <div class="dash-nav-section">
+      <div class="dash-nav-heading">Account</div>
+      <div class="dash-nav-item" onclick="showPanel('profile')">
+        <span class="dash-nav-icon">👤</span> My Profile
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('payments')">
+        <span class="dash-nav-icon">💳</span> Payments
+      </div>
+      <div class="dash-nav-item" onclick="showPanel('settings')">
+        <span class="dash-nav-icon">⚙️</span> Settings
+      </div>
+    </div>
+  </nav>
+
+  <div class="dash-sidebar-user">
+    <div class="dash-user-card">
+      <div class="dash-user-avatar" id="userAvatar">A</div>
+      <div>
+        <div class="dash-user-name" id="userName">Loading…</div>
+        <div class="dash-user-role" id="userRole">buyer</div>
+      </div>
+      <div class="dash-user-actions">
+        <button class="dash-icon-btn" title="Sign Out" onclick="SupabaseAuth.signOut()">⏻</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ══════════════ MAIN CONTENT ════════════════════════════ -->
+<div class="dash-main">
+
+  <!-- Top Bar -->
+  <div class="dash-topbar">
+    <div class="dash-topbar-left">
+      <h1 id="topbarTitle">My Dashboard</h1>
+      <p id="topbarSub">Welcome back — here's your furniture overview</p>
+    </div>
+    <div class="dash-topbar-right">
+      <div class="dash-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Search furniture, orders…" id="searchInput"/>
+      </div>
+      <a href="kyc1.html" class="btn btn-outline btn-sm">Complete Profile</a>
+      <button class="btn btn-gold btn-sm" onclick="showPanel('home-cat')">+ Browse</button>
+    </div>
+  </div>
+
+  <div class="dash-content">
+
+    <!-- ══ OVERVIEW PANEL ══════════════════════════════════ -->
+    <div id="panel-overview">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div>
+              <div class="kpi-val" data-counter="3">0</div>
+              <div class="kpi-label">Active Orders</div>
+            </div>
+            <div class="kpi-icon gold">📦</div>
+          </div>
+          <div class="kpi-change up">↑ 1 new this week</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div>
+              <div class="kpi-val" data-counter="12">0</div>
+              <div class="kpi-label">Wishlist Items</div>
+            </div>
+            <div class="kpi-icon teak">❤️</div>
+          </div>
+          <div class="kpi-change up">↑ 4 added recently</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div>
+              <div class="kpi-val">₦<span data-counter="1285000" data-nosep>0</span></div>
+              <div class="kpi-label">Total Spent</div>
+            </div>
+            <div class="kpi-icon mahogany">💰</div>
+          </div>
+          <div class="kpi-change up">↑ Lifetime value</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <div>
+              <div class="kpi-val" data-counter="8">0</div>
+              <div class="kpi-label">Loyalty Points</div>
+            </div>
+            <div class="kpi-icon forest">🏆</div>
+          </div>
+          <div class="kpi-change up">↑ Gold Member</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="gap:24px;margin-bottom:24px;">
+        <!-- Recent Orders -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <h3>📦 Recent Orders</h3>
+            <span class="badge badge-gold">3 Active</span>
+          </div>
+          <div class="dash-panel-body">
+            <div class="order-row">
+              <div class="order-icon gold">🛋️</div>
+              <div style="flex:1;">
+                <div class="order-title">Royal Mahogany Sofa Set</div>
+                <div class="order-meta">Order #9JF-2024 · In Production · Lagos</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="order-price">₦485,000</div>
+                <span class="badge badge-gold" style="font-size:.65rem;">In Production</span>
+              </div>
+            </div>
+            <div class="order-row">
+              <div class="order-icon teak">🖥️</div>
+              <div style="flex:1;">
+                <div class="order-title">CEO L-Shape Executive Desk</div>
+                <div class="order-meta">Order #9JF-2025 · Quality Check · Abuja</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="order-price">₦380,000</div>
+                <span class="badge badge-sky" style="font-size:.65rem;">Quality Check</span>
+              </div>
+            </div>
+            <div class="order-row">
+              <div class="order-icon forest">🍳</div>
+              <div style="flex:1;">
+                <div class="order-title">Marble-Top Kitchen Island</div>
+                <div class="order-meta">Order #9JF-2026 · Out for Delivery · Lagos</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="order-price">₦340,000</div>
+                <span class="badge badge-forest" style="font-size:.65rem;">Out for Delivery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="dash-panel">
+          <div class="dash-panel-header">
+            <h3>⚡ Recent Activity</h3>
+            <span class="badge badge-mahogany">Today</span>
+          </div>
+          <div class="dash-panel-body">
+            <div class="activity-item">
+              <div class="activity-dot gold">📦</div>
+              <div>
+                <div class="activity-text"><strong>Order shipped</strong> — Royal Mahogany Sofa Set is in production</div>
+                <div class="activity-time">2 hours ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot teak">❤️</div>
+              <div>
+                <div class="activity-text"><strong>Wishlist updated</strong> — Emperor King Bed Frame saved</div>
+                <div class="activity-time">5 hours ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot forest">🚚</div>
+              <div>
+                <div class="activity-text"><strong>Out for delivery!</strong> — Marble Kitchen Island arriving today</div>
+                <div class="activity-time">Yesterday</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot gold">💎</div>
+              <div>
+                <div class="activity-text"><strong>Gold Member</strong> — Loyalty milestone achieved</div>
+                <div class="activity-time">2 days ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot forest">✅</div>
+              <div>
+                <div class="activity-text"><strong>Review received</strong> — 5⭐ for Teak Dining Set</div>
+                <div class="activity-time">3 days ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Popularity -->
+      <div class="dash-panel" style="margin-bottom:24px;">
+        <div class="dash-panel-header">
+          <h3>📊 Your Favourite Categories</h3>
+          <span class="badge badge-teak">Personalised</span>
+        </div>
+        <div class="dash-panel-body">
+          <div class="cat-row">
+            <span class="cat-name">🛋️ Home Furniture</span>
+            <div class="cat-bar"><div class="cat-fill" style="width:75%;"></div></div>
+            <span class="cat-pct">75%</span>
+          </div>
+          <div class="cat-row">
+            <span class="cat-name">🍳 Kitchen Cabinets</span>
+            <div class="cat-bar"><div class="cat-fill" style="width:60%;"></div></div>
+            <span class="cat-pct">60%</span>
+          </div>
+          <div class="cat-row">
+            <span class="cat-name">🖥️ Office Furniture</span>
+            <div class="cat-bar"><div class="cat-fill" style="width:45%;"></div></div>
+            <span class="cat-pct">45%</span>
+          </div>
+          <div class="cat-row">
+            <span class="cat-name">🌿 Outdoor</span>
+            <div class="cat-bar"><div class="cat-fill" style="width:20%;"></div></div>
+            <span class="cat-pct">20%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended -->
+      <div class="dash-panel">
+        <div class="dash-panel-header">
+          <h3>🌟 Recommended For You</h3>
+          <span class="badge badge-gold">AI Curated</span>
+        </div>
+        <div class="dash-panel-body">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+            <div class="card card-sm" style="cursor:pointer;" onclick="window._toast.show('Opening product details…','info')">
+              <div class="card-body">
+                <div style="font-size:2.5rem;margin-bottom:12px;text-align:center;">🛏️</div>
+                <div class="badge badge-mahogany mb-8">Bedroom</div>
+                <h4 style="font-size:.9rem;margin-bottom:4px;">Emperor King Bed Frame</h4>
+                <p style="font-size:.8rem;color:var(--text-muted);">Walnut finish · 6×6 · Hand-carved</p>
+                <div style="font-size:1rem;font-weight:800;color:var(--mahogany);margin:8px 0;">₦320,000</div>
+                <button class="btn btn-gold btn-xs w-full" onclick="window._toast.show('Added to cart!','success');event.stopPropagation()">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card card-sm" style="cursor:pointer;" onclick="window._toast.show('Opening product details…','info')">
+              <div class="card-body">
+                <div style="font-size:2.5rem;margin-bottom:12px;text-align:center;">💺</div>
+                <div class="badge badge-sky mb-8">Office</div>
+                <h4 style="font-size:.9rem;margin-bottom:4px;">Director Leather Boss Chair</h4>
+                <p style="font-size:.8rem;color:var(--text-muted);">Full leather · Lumbar support · Black</p>
+                <div style="font-size:1rem;font-weight:800;color:var(--mahogany);margin:8px 0;">₦165,000</div>
+                <button class="btn btn-gold btn-xs w-full" onclick="window._toast.show('Added to cart!','success');event.stopPropagation()">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card card-sm" style="cursor:pointer;" onclick="window._toast.show('Opening product details…','info')">
+              <div class="card-body">
+                <div style="font-size:2.5rem;margin-bottom:12px;text-align:center;">🗄️</div>
+                <div class="badge badge-gold mb-8">Kitchen</div>
+                <h4 style="font-size:.9rem;margin-bottom:4px;">Gloss White Wall Unit</h4>
+                <p style="font-size:.8rem;color:var(--text-muted);">Per metre · Soft-close hinges</p>
+                <div style="font-size:1rem;font-weight:800;color:var(--mahogany);margin:8px 0;">₦85,000/m</div>
+                <button class="btn btn-gold btn-xs w-full" onclick="window._toast.show('Added to cart!','success');event.stopPropagation()">Get Quote</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ORDERS PANEL ════════════════════════════════════ -->
+    <div id="panel-orders" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>📦 My Orders</h3><span class="badge badge-gold">3 Active</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Order ID</th><th>Product</th><th>Category</th><th>State</th><th>Amount</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#9JF-2024</strong></td>
+                <td>Royal Mahogany Sofa Set</td>
+                <td><span class="badge badge-mahogany">Home</span></td>
+                <td>Lagos</td>
+                <td><strong>₦485,000</strong></td>
+                <td><span class="badge badge-gold">In Production</span></td>
+              </tr>
+              <tr>
+                <td><strong>#9JF-2025</strong></td>
+                <td>CEO L-Shape Executive Desk</td>
+                <td><span class="badge badge-sky">Office</span></td>
+                <td>Abuja</td>
+                <td><strong>₦380,000</strong></td>
+                <td><span class="badge badge-sky">Quality Check</span></td>
+              </tr>
+              <tr>
+                <td><strong>#9JF-2026</strong></td>
+                <td>Marble-Top Kitchen Island</td>
+                <td><span class="badge badge-teak">Kitchen</span></td>
+                <td>Lagos</td>
+                <td><strong>₦340,000</strong></td>
+                <td><span class="badge badge-forest">Out for Delivery</span></td>
+              </tr>
+              <tr>
+                <td><strong>#9JF-2021</strong></td>
+                <td>Teak 6-Seater Dining Set</td>
+                <td><span class="badge badge-mahogany">Home</span></td>
+                <td>Lagos</td>
+                <td><strong>₦275,000</strong></td>
+                <td><span class="badge badge-success">Delivered ✓</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ WISHLIST PANEL ══════════════════════════════════ -->
+    <div id="panel-wishlist" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>❤️ My Wishlist</h3><span class="badge badge-teak">12 Items</span></div>
+        <div class="dash-panel-body">
+          <div class="alert alert-gold">💡 Your wishlist is synced across devices. Share it with your interior designer or family.</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px;">
+            <div class="card card-sm">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:2rem;margin-bottom:8px;">🛏️</div>
+                <div style="font-size:.88rem;font-weight:700;color:var(--mahogany);">Emperor King Bed</div>
+                <div style="font-size:.8rem;color:var(--text-muted);margin:4px 0;">₦320,000</div>
+                <button class="btn btn-gold btn-xs mt-8 w-full" onclick="window._toast.show('Added to cart!','success')">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card card-sm">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:2rem;margin-bottom:8px;">💺</div>
+                <div style="font-size:.88rem;font-weight:700;color:var(--mahogany);">Boss Leather Chair</div>
+                <div style="font-size:.8rem;color:var(--text-muted);margin:4px 0;">₦165,000</div>
+                <button class="btn btn-gold btn-xs mt-8 w-full" onclick="window._toast.show('Added to cart!','success')">Add to Cart</button>
+              </div>
+            </div>
+            <div class="card card-sm">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:2rem;margin-bottom:8px;">🗄️</div>
+                <div style="font-size:.88rem;font-weight:700;color:var(--mahogany);">Walnut Display Cabinet</div>
+                <div style="font-size:.8rem;color:var(--text-muted);margin:4px 0;">₦195,000</div>
+                <button class="btn btn-gold btn-xs mt-8 w-full" onclick="window._toast.show('Added to cart!','success')">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ TRACKING PANEL ══════════════════════════════════ -->
+    <div id="panel-tracking" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>🚚 Delivery Tracker</h3></div>
+        <div class="dash-panel-body" style="max-width:600px;">
+          <div class="alert alert-forest" style="background:rgba(45,90,39,.08);border:1px solid rgba(45,90,39,.25);color:#2d5a27;">
+            🚚 <strong>Marble-Top Kitchen Island</strong> is out for delivery. Expected today by 5pm.
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px;margin-top:24px;">
+            <div style="display:flex;gap:16px;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">✓</div>
+              <div><div style="font-weight:700;color:var(--mahogany);">Order Confirmed</div><div style="font-size:.8rem;color:var(--text-muted);">June 5, 2026 · 09:15am</div></div>
+            </div>
+            <div style="display:flex;gap:16px;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">✓</div>
+              <div><div style="font-weight:700;color:var(--mahogany);">In Production</div><div style="font-size:.8rem;color:var(--text-muted);">June 5, 2026 · 02:30pm</div></div>
+            </div>
+            <div style="display:flex;gap:16px;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">✓</div>
+              <div><div style="font-weight:700;color:var(--mahogany);">Quality Inspection Passed</div><div style="font-size:.8rem;color:var(--text-muted);">June 8, 2026 · 10:00am</div></div>
+            </div>
+            <div style="display:flex;gap:16px;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--mahogany);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;animation:pulse-dot 1.5s infinite;">🚚</div>
+              <div><div style="font-weight:700;color:var(--mahogany);">Out for Delivery — En Route to Lagos</div><div style="font-size:.8rem;color:var(--amber);">Today · Est. 5pm</div></div>
+            </div>
+            <div style="display:flex;gap:16px;opacity:.4;">
+              <div style="width:40px;height:40px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🏠</div>
+              <div><div style="font-weight:700;color:var(--mahogany);">Delivered &amp; Assembled</div><div style="font-size:.8rem;color:var(--text-muted);">Pending</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PROFILE PANEL ════════════════════════════════════ -->
+    <div id="panel-profile" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>👤 My Profile</h3><a href="kyc1.html" class="btn btn-outline btn-sm">Edit Profile</a></div>
+        <div class="dash-panel-body">
+          <div style="display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:flex-start;">
+            <div style="text-align:center;">
+              <div style="width:100px;height:100px;border-radius:50%;
+                background:linear-gradient(135deg,var(--gold),var(--amber));
+                display:flex;align-items:center;justify-content:center;
+                font-size:2.5rem;font-weight:900;color:var(--mahogany);
+                font-family:var(--font-display);margin:0 auto 16px;" id="profileAvatar">A</div>
+              <div style="font-size:1rem;font-weight:800;color:var(--mahogany);" id="profileName">Loading…</div>
+              <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;" id="profileRole">Buyer</div>
+              <span class="badge badge-gold mt-12">💎 Gold Member</span>
+            </div>
+            <div>
+              <div class="grid-2" style="gap:16px;">
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <div class="form-control" style="background:var(--bg);cursor:default;" id="profileEmail">—</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <div class="form-control" style="background:var(--bg);cursor:default;" id="profilePhone">—</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">State</label>
+                  <div class="form-control" style="background:var(--bg);cursor:default;" id="profileState">Lagos</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Account Type</label>
+                  <div class="form-control" style="background:var(--bg);cursor:default;">Individual Buyer</div>
+                </div>
+              </div>
+              <div class="alert alert-gold mt-16" style="margin-bottom:0;">
+                🏆 <strong>Gold Member</strong> — Enjoy 5% off all orders, priority support and early access to new collections.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SETTINGS PANEL ══════════════════════════════════ -->
+    <div id="panel-settings" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>⚙️ Account Settings</h3></div>
+        <div class="dash-panel-body">
+          <div style="max-width:500px;">
+            <div class="form-group">
+              <label class="form-label">Display Name</label>
+              <input type="text" class="form-control" id="settingsName" placeholder="Your name"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Notification Preferences</label>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+                <label class="check-label"><input type="checkbox" checked/> Order status updates via email</label>
+                <label class="check-label"><input type="checkbox" checked/> Delivery notifications via SMS</label>
+                <label class="check-label"><input type="checkbox" checked/> New collection alerts</label>
+                <label class="check-label"><input type="checkbox"/> Promotional offers and discounts</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Default Delivery State</label>
+              <select class="form-control form-select">
+                <option>Lagos</option><option>Abuja (FCT)</option>
+                <option>Kano</option><option>Port Harcourt</option>
+              </select>
+            </div>
+            <button class="btn btn-gold" onclick="window._toast.show('Settings saved!','success')">Save Settings</button>
+            <button class="btn btn-outline" style="margin-left:12px;" onclick="SupabaseAuth.signOut()">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ GENERIC CATEGORY PANELS ════════════════════════ -->
+    <div id="panel-home-cat" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>🛋️ Home Furniture</h3><a href="index.html#home-section" class="btn btn-gold btn-sm">Browse All</a></div>
+        <div class="dash-panel-body"><div class="alert alert-gold">Browse the full home furniture collection on our main store page.</div><a href="index.html#home-section" class="btn btn-gold mt-16">View Home Furniture →</a></div>
+      </div>
+    </div>
+    <div id="panel-office-cat" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>🖥️ Office Furniture</h3><a href="index.html#office-section" class="btn btn-gold btn-sm">Browse All</a></div>
+        <div class="dash-panel-body"><div class="alert alert-gold">Browse the full office furniture collection on our main store page.</div><a href="index.html#office-section" class="btn btn-gold mt-16">View Office Furniture →</a></div>
+      </div>
+    </div>
+    <div id="panel-kitchen-cat" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>🍳 Kitchen Cabinets</h3><a href="index.html#kitchen-section" class="btn btn-gold btn-sm">Browse All</a></div>
+        <div class="dash-panel-body"><div class="alert alert-gold">Browse the full kitchen cabinet collection on our main store page.</div><a href="index.html#kitchen-section" class="btn btn-gold mt-16">View Kitchen Cabinets →</a></div>
+      </div>
+    </div>
+    <div id="panel-custom" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>📐 Custom Orders</h3><span class="badge badge-gold">Bespoke</span></div>
+        <div class="dash-panel-body">
+          <div class="alert alert-gold">🔨 Our master craftsmen can build anything to your exact specifications. Fill in a custom order request and we'll get back to you within 24 hours.</div>
+          <button class="btn btn-gold mt-16" onclick="window._toast.show('Custom order form coming soon — call us on 0800-9JA-FURN','info')">Request Custom Build →</button>
+        </div>
+      </div>
+    </div>
+    <div id="panel-all-states" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>📍 Delivery Coverage</h3><span class="badge badge-forest">All 36 States</span></div>
+        <div class="dash-panel-body"><div class="alert alert-gold">We deliver to all 36 states and FCT. Lagos and Abuja enjoy same-day/next-day delivery.</div><a href="index.html#states-section" class="btn btn-gold mt-16">View State Coverage →</a></div>
+      </div>
+    </div>
+    <div id="panel-payments" style="display:none;">
+      <div class="dash-panel">
+        <div class="dash-panel-header"><h3>💳 Payment Methods</h3></div>
+        <div class="dash-panel-body"><div class="alert alert-gold">💳 Card payments, bank transfers, USSD and 0% instalment plans available. Connect your payment method to enable faster checkout.</div><button class="btn btn-gold mt-16" onclick="window._toast.show('Payment portal coming soon!','info')">Add Payment Method →</button></div>
+      </div>
+    </div>
+
+  </div><!-- /dash-content -->
+</div><!-- /dash-main -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+<script src="js/supabase.js"></script>
+<script>
+const panels = ['overview','orders','wishlist','tracking','home-cat','office-cat','kitchen-cat','custom','all-states','profile','payments','settings'];
+
+function showPanel(name) {
+  panels.forEach(p => {
+    const el = document.getElementById(`panel-${p}`);
+    if (el) el.style.display = (p === name) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.dash-nav-item').forEach(item => item.classList.remove('active'));
+  const titles = {
+    'overview':    ['My Dashboard',         "Welcome back — here's your furniture overview"],
+    'orders':      ['My Orders',            'Track all your current and past orders'],
+    'wishlist':    ['My Wishlist',          'Products saved for later'],
+    'tracking':    ['Delivery Tracker',     'Real-time delivery status'],
+    'home-cat':    ['Home Furniture',       'Browse living room, bedroom and dining furniture'],
+    'office-cat':  ['Office Furniture',     'Executive desks, chairs, boardroom tables'],
+    'kitchen-cat': ['Kitchen Cabinets',     'Custom and standard kitchen cabinet solutions'],
+    'custom':      ['Custom Orders',        'Bespoke furniture built to your exact specifications'],
+    'all-states':  ['All 36 States',        'Delivery coverage across Nigeria'],
+    'profile':     ['My Profile',           'Your account details and preferences'],
+    'payments':    ['Payment Methods',      'Manage your payment options and instalments'],
+    'settings':    ['Account Settings',     'Manage your preferences and notifications'],
+  };
+  const t = titles[name] || ['Dashboard', ''];
+  document.getElementById('topbarTitle').textContent = t[0];
+  document.getElementById('topbarSub').textContent   = t[1];
+}
+
+function filterByState(state) {
+  window._toast.show(`Showing furniture available in ${state}…`, 'info');
+  showPanel('home-cat');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await SupabaseAuth.requireAuth('login.html');
+
+  try {
+    const profile = await SupabaseAuth.getProfile();
+    if (profile) {
+      const name    = `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Customer';
+      const initial = name.charAt(0).toUpperCase();
+      document.getElementById('userName').textContent      = name;
+      document.getElementById('userAvatar').textContent    = initial;
+      document.getElementById('userRole').textContent      = profile.role || 'buyer';
+      document.getElementById('profileName').textContent   = name;
+      document.getElementById('profileAvatar').textContent = initial;
+      document.getElementById('profileRole').textContent   = profile.role || 'Buyer';
+      document.getElementById('profileEmail').textContent  = profile.email || '—';
+      document.getElementById('settingsName').value        = name;
+    }
+  } catch (e) {
+    document.getElementById('userName').textContent      = 'Demo Customer';
+    document.getElementById('userAvatar').textContent    = 'D';
+    document.getElementById('profileName').textContent   = 'Demo Customer';
+    document.getElementById('profileAvatar').textContent = 'D';
+  }
+
+  document.addEventListener('click', (e) => {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar?.contains(e.target) && window.innerWidth < 900) {
+      sidebar?.classList.remove('open');
+    }
+  });
+});
+
+document.getElementById('searchInput')?.addEventListener('input', debounce((e) => {
+  const query = e.target.value;
+  if (query.length > 2) window._toast.show(`Searching for: "${query}"…`, 'info', 2000);
+}, 400));
+</script>
+</body>
+</html>

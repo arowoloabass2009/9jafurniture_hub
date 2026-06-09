@@ -1,0 +1,27 @@
+{
+  "server": {
+    "baseDir": "./"
+  },
+  "port": 3000,
+  "open": "local",
+  "startPath": "/index.html",
+  "notify": false,
+  "ui": false,
+  "logLevel": "info",
+  "logPrefix": "9jaFurniture",
+  "logConnections": false,
+  "logFileChanges": true,
+  "ghostMode": {
+    "clicks": false,
+    "forms": false,
+    "scroll": false
+  },
+  "reloadDelay": 300,
+  "reloadDebounce": 500,
+  "files": [
+    "*.html",
+    "css/**/*.css",
+    "js/app.js",
+    "js/supabase.js"
+  ]
+}

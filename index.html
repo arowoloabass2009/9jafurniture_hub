@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>9ja Furniture Hub — Nigeria's Premier Furniture Marketplace</title>
+  <meta name="description" content="Discover premium home, office and kitchen furniture across Nigeria. Handcrafted quality delivered to your door."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/splash.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVBAR ═════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo">🪑</div>
+      <span class="navbar-name">9ja Furniture <span>Hub</span><small>Nigeria's Finest</small></span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="#home"     class="nav-link active">Home</a></li>
+      <li><a href="#home-section"   class="nav-link">Home Furniture</a></li>
+      <li><a href="#office-section" class="nav-link">Office</a></li>
+      <li><a href="#kitchen-section"class="nav-link">Kitchen</a></li>
+      <li><a href="#states-section" class="nav-link">Locations</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="cart-btn" onclick="window.location.href='dashboard.html'">
+        🛒 Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="login.html"  class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="signup.html" class="btn btn-gold btn-sm">Shop Now</a>
+    </div>
+    <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-glow-3"></div>
+  <div class="container hero-inner">
+
+    <!-- Left: Content -->
+    <div class="hero-content animate-fadeInUp">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Nigeria's #1 Furniture Marketplace · 2026
+      </div>
+      <h1 class="hero-title">
+        Elevate Every<br/>
+        <span class="accent-gold">Space</span> With<br/>
+        <span class="accent-cream">Timeless Craft</span>
+      </h1>
+      <p class="hero-desc">
+        From luxurious home living rooms to ergonomic office setups and bespoke kitchen cabinets —
+        9ja Furniture Hub brings world-class Nigerian craftsmanship directly to your door,
+        across all 36 states.
+      </p>
+      <div class="hero-actions">
+        <a href="signup.html" class="btn btn-gold btn-lg">
+          Shop Collections
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn btn-outline-white btn-lg">How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val"><span data-counter="15000">0</span>+</div>
+          <div class="hero-stat-label">Products</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val"><span data-counter="36">0</span></div>
+          <div class="hero-stat-label">States</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val"><span data-counter="8500">0</span>+</div>
+          <div class="hero-stat-label">Happy Clients</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val"><span data-counter="120">0</span>+</div>
+          <div class="hero-stat-label">Artisans</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Visual Card -->
+    <div class="hero-visual animate-slideInRight">
+      <div class="hero-card-stack">
+        <div class="hero-card-back"></div>
+        <div class="hero-card-back-2"></div>
+        <div class="hero-card-main">
+          <div class="hero-card-badge">🏠 Featured · Home Collection</div>
+          <div class="hero-card-title">Royal Mahogany Sofa Set</div>
+          <div class="hero-card-sub">7-Seater · Hand-carved · Lagos Oak Finish</div>
+          <div class="hero-card-price">₦ 485,000</div>
+          <div class="hero-card-specs">
+            <div class="hero-spec-row">
+              <span class="hero-spec-label">Durability</span>
+              <div class="hero-spec-bar"><div class="hero-spec-fill" style="width:95%;"></div></div>
+              <span class="hero-spec-val">95%</span>
+            </div>
+            <div class="hero-spec-row">
+              <span class="hero-spec-label">Craftwork</span>
+              <div class="hero-spec-bar"><div class="hero-spec-fill" style="width:98%;"></div></div>
+              <span class="hero-spec-val">98%</span>
+            </div>
+            <div class="hero-spec-row">
+              <span class="hero-spec-label">Comfort</span>
+              <div class="hero-spec-bar"><div class="hero-spec-fill" style="width:90%;"></div></div>
+              <span class="hero-spec-val">90%</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-chip pc-1">🪑 In Stock · Lagos</div>
+        <div class="product-chip pc-2">⭐ 4.9 (312 reviews)</div>
+        <div class="product-chip pc-3">🚚 Free delivery ≥ ₦200k</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ CATEGORY BAND ══════════════════════ -->
+<div class="cat-band">
+  <div class="container">
+    <div class="cat-band-inner">
+      <span class="cat-band-label">Browse by</span>
+      <span class="cat-pill home" onclick="scrollToSection('home-section')">🏠 Home Furniture</span>
+      <span class="cat-pill office" onclick="scrollToSection('office-section')">🖥 Office</span>
+      <span class="cat-pill kitchen" onclick="scrollToSection('kitchen-section')">🍳 Kitchen Cabinets</span>
+      <span class="cat-pill outdoor" onclick="scrollToSection('outdoor-section')">🌿 Outdoor</span>
+      <span class="cat-pill luxury" onclick="scrollToSection('luxury-section')">💎 Luxury</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ HOME FURNITURE SECTION ══════════════════ -->
+<section class="section" id="home-section" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-mahogany mb-12">🏠 Home Collection</span>
+      <h2 class="display-3">Transform Your Living Space</h2>
+      <div class="divider"></div>
+      <p class="lead">Handcrafted Nigerian furniture that turns every room into a masterpiece of comfort and elegance.</p>
+    </div>
+
+    <!-- Section Tabs -->
+    <div class="section-tabs reveal">
+      <span class="section-tab active" onclick="filterProducts('all','home')">All</span>
+      <span class="section-tab" onclick="filterProducts('living','home')">Living Room</span>
+      <span class="section-tab" onclick="filterProducts('bedroom','home')">Bedroom</span>
+      <span class="section-tab" onclick="filterProducts('dining','home')">Dining Room</span>
+      <span class="section-tab" onclick="filterProducts('hallway','home')">Hallway</span>
+    </div>
+
+    <div class="grid-4 reveal" id="home-products">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#f5ead8,#e8d0b0);">
+          🛋️
+          <span class="product-card-badge badge badge-gold">Best Seller</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Living Room</div>
+          <div class="product-card-title">Royal Mahogany Sofa Set</div>
+          <div class="product-card-price">₦485,000 <span class="old-price">₦520,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(312)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Royal Mahogany Sofa Set',485000)">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fdf6ec,#f0e0c8);">
+          🛏️
+          <span class="product-card-badge badge badge-new">New</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Bedroom</div>
+          <div class="product-card-title">Emperor King Bed Frame</div>
+          <div class="product-card-price">₦320,000 <span class="old-price">₦360,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(187)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Emperor King Bed Frame',320000)">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#f9efe0,#e8d0b0);">
+          🪑
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Dining Room</div>
+          <div class="product-card-title">Teak 6-Seater Dining Set</div>
+          <div class="product-card-price">₦275,000</div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★☆</span><span class="product-rating">(94)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Teak 6-Seater Dining Set',275000)">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fef3c7,#f5ead8);">
+          🗄️
+          <span class="product-card-badge badge badge-teak">Premium</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Hallway</div>
+          <div class="product-card-title">Walnut Display Cabinet</div>
+          <div class="product-card-price">₦195,000 <span class="old-price">₦230,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(58)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Walnut Display Cabinet',195000)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-40 reveal">
+      <a href="signup.html" class="btn btn-outline btn-lg">View All Home Furniture →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ OFFICE SECTION ══════════════════════════ -->
+<section class="section" id="office-section" style="background:var(--bg);">
+  <div class="container">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-sky mb-12">🖥 Office Collection</span>
+      <h2 class="display-3">Inspire Productivity, Elevate Status</h2>
+      <div class="divider"></div>
+      <p class="lead">Professional office furniture engineered for performance, designed for prestige. From boardrooms to home offices.</p>
+    </div>
+
+    <div class="section-tabs reveal">
+      <span class="section-tab active" onclick="filterProducts('all','office')">All</span>
+      <span class="section-tab" onclick="filterProducts('desk','office')">Desks</span>
+      <span class="section-tab" onclick="filterProducts('chair','office')">Executive Chairs</span>
+      <span class="section-tab" onclick="filterProducts('storage','office')">Storage</span>
+      <span class="section-tab" onclick="filterProducts('boardroom','office')">Boardroom</span>
+    </div>
+
+    <div class="grid-4 reveal" id="office-products">
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#e0f0fb,#c8dff0);">
+          🖥️
+          <span class="product-card-badge badge badge-sky">Top Pick</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Executive Desk</div>
+          <div class="product-card-title">CEO L-Shape Executive Desk</div>
+          <div class="product-card-price">₦380,000 <span class="old-price">₦420,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(201)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('CEO L-Shape Executive Desk',380000)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#edf2ff,#dbe4ff);">
+          💺
+          <span class="product-card-badge badge badge-violet">Ergonomic</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Executive Chair</div>
+          <div class="product-card-title">Director Leather Boss Chair</div>
+          <div class="product-card-price">₦165,000</div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(145)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Director Leather Boss Chair',165000)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);">
+          📚
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Storage</div>
+          <div class="product-card-title">5-Door Filing Cabinet</div>
+          <div class="product-card-price">₦98,000 <span class="old-price">₦115,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★☆</span><span class="product-rating">(73)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('5-Door Filing Cabinet',98000)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fdf4ff,#f5d0fe);">
+          🪵
+          <span class="product-card-badge badge badge-gold">Luxury</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Boardroom</div>
+          <div class="product-card-title">12-Seater Boardroom Table</div>
+          <div class="product-card-price">₦850,000</div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(38)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('12-Seater Boardroom Table',850000)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-40 reveal">
+      <a href="signup.html" class="btn btn-outline btn-lg">View All Office Furniture →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ KITCHEN CABINETS ════════════════════════ -->
+<section class="section" id="kitchen-section" style="background:var(--cream-alt);">
+  <div class="container">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-gold mb-12">🍳 Kitchen Collection</span>
+      <h2 class="display-3">Bespoke Kitchen Cabinets</h2>
+      <div class="divider"></div>
+      <p class="lead">Custom-built kitchen cabinetry combining Nigerian hardwood tradition with modern European finishes. Tailored to your space.</p>
+    </div>
+
+    <div class="section-tabs reveal">
+      <span class="section-tab active" onclick="filterProducts('all','kitchen')">All</span>
+      <span class="section-tab" onclick="filterProducts('wall','kitchen')">Wall Cabinets</span>
+      <span class="section-tab" onclick="filterProducts('floor','kitchen')">Floor Units</span>
+      <span class="section-tab" onclick="filterProducts('island','kitchen')">Kitchen Island</span>
+      <span class="section-tab" onclick="filterProducts('custom','kitchen')">Custom Built</span>
+    </div>
+
+    <!-- Featured Kitchen Showcase -->
+    <div class="grid-2 reveal" style="gap:32px;margin-bottom:40px;">
+      <div class="collection-card" style="background:linear-gradient(135deg,#3b1a08,#8b4513);min-height:320px;">
+        <div class="collection-card-bg" style="font-size:6rem;">🍳</div>
+        <div class="collection-card-overlay"></div>
+        <div class="collection-card-content" style="padding:32px;">
+          <div class="collection-card-tag">Signature Series</div>
+          <div class="collection-card-title">Lagos Modern Kitchen</div>
+          <div class="collection-card-count">Full set from ₦1.2M · Custom dimensions</div>
+          <div class="mt-16"><a href="signup.html" class="btn btn-gold btn-sm">Get Quote</a></div>
+        </div>
+      </div>
+      <div class="collection-card" style="background:linear-gradient(135deg,#1a0a00,#5c2d0e);min-height:320px;">
+        <div class="collection-card-bg" style="font-size:6rem;">🪵</div>
+        <div class="collection-card-overlay"></div>
+        <div class="collection-card-content" style="padding:32px;">
+          <div class="collection-card-tag">Heritage Series</div>
+          <div class="collection-card-title">Abuja Classic Kitchen</div>
+          <div class="collection-card-count">Full set from ₦850K · Iroko wood finish</div>
+          <div class="mt-16"><a href="signup.html" class="btn btn-outline-white btn-sm">Get Quote</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-4 reveal" id="kitchen-products">
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">
+          🗄️
+          <span class="product-card-badge badge badge-gold">Popular</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Wall Cabinet</div>
+          <div class="product-card-title">Gloss White Wall Unit (Per metre)</div>
+          <div class="product-card-price">₦85,000 <span class="old-price">₦95,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(224)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Gloss White Wall Unit',85000)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#f5ead8,#e8d0b0);">
+          🍽️
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Floor Unit</div>
+          <div class="product-card-title">Oak Base Cabinet with Drawers</div>
+          <div class="product-card-price">₦120,000</div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(159)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Oak Base Cabinet',120000)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#ecfdf5,#d1fae5);">
+          🏝️
+          <span class="product-card-badge badge badge-forest">Trending</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Kitchen Island</div>
+          <div class="product-card-title">Marble-Top Centre Island</div>
+          <div class="product-card-price">₦340,000 <span class="old-price">₦390,000</span></div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(87)</span>
+          <button class="btn btn-gold btn-xs" onclick="addToCart('Marble-Top Centre Island',340000)">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card-img" style="background:linear-gradient(135deg,#fff7ed,#fed7aa);">
+          🔨
+          <span class="product-card-badge badge badge-teak">Custom</span>
+          <div class="product-card-wishlist" onclick="toggleWishlist(this)">🤍</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">Custom Built</div>
+          <div class="product-card-title">Full Kitchen Custom Build</div>
+          <div class="product-card-price">From ₦850,000</div>
+        </div>
+        <div class="product-card-footer">
+          <span class="product-stars">★★★★★</span><span class="product-rating">(42)</span>
+          <button class="btn btn-gold btn-xs" onclick="window._toast.show('Our team will contact you within 24hrs!','success')">Get Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STATES SECTION ══════════════════════════ -->
+<section class="section" id="states-section" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-mahogany mb-12">📍 Nationwide Delivery</span>
+      <h2 class="display-3">We Deliver Across All 36 States</h2>
+      <div class="divider"></div>
+      <p class="lead">With showrooms and delivery partners in every state, bringing premium furniture to your doorstep — no matter where you are in Nigeria.</p>
+    </div>
+
+    <!-- Featured States -->
+    <div class="grid-4 reveal" style="margin-bottom:40px;">
+      <div class="state-card" onclick="window._toast.show('Lagos · 2,400+ products available · Same-day delivery','info')">
+        <div class="state-card-top" style="background:linear-gradient(135deg,#3b1a08,#8b4513);">🌴</div>
+        <div class="state-card-body">
+          <div class="state-name">Lagos</div>
+          <div class="state-count">2,400+ products · Same-day delivery</div>
+        </div>
+      </div>
+      <div class="state-card" onclick="window._toast.show('Abuja FCT · 1,800+ products available · Next-day delivery','info')">
+        <div class="state-card-top" style="background:linear-gradient(135deg,#1a3460,#0e2a52);">🏛️</div>
+        <div class="state-card-body">
+          <div class="state-name">Abuja (FCT)</div>
+          <div class="state-count">1,800+ products · Next-day delivery</div>
+        </div>
+      </div>
+      <div class="state-card" onclick="window._toast.show('Kano · 1,200+ products available · 2-day delivery','info')">
+        <div class="state-card-top" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">🕌</div>
+        <div class="state-card-body">
+          <div class="state-name">Kano</div>
+          <div class="state-count">1,200+ products · 2-day delivery</div>
+        </div>
+      </div>
+      <div class="state-card" onclick="window._toast.show('Port Harcourt · 1,050+ products · Next-day delivery','info')">
+        <div class="state-card-top" style="background:linear-gradient(135deg,#0f766e,#134e4a);">⚓</div>
+        <div class="state-card-body">
+          <div class="state-name">Port Harcourt</div>
+          <div class="state-count">1,050+ products · Next-day delivery</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- All States Grid -->
+    <div class="card reveal">
+      <div class="card-body">
+        <h3 style="font-size:1.1rem;font-weight:800;color:var(--mahogany);margin-bottom:24px;">
+          📦 Delivery Available in All 36 States + FCT
+        </h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;" id="statesGrid">
+          <!-- States injected by JS -->
+        </div>
+        <div class="alert alert-gold mt-24" style="margin-bottom:0;">
+          🚚 <strong>Free delivery</strong> on orders above ₦200,000. Standard delivery 2–5 business days to all states.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FEATURES ════════════════════════════════ -->
+<section class="section" id="features" style="background:var(--bg);">
+  <div class="container">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-teak mb-12">✨ Why Choose Us</span>
+      <h2 class="display-3">The 9ja Furniture Difference</h2>
+      <div class="divider"></div>
+      <p class="lead">Six reasons why Nigeria's leading architects, interior designers and homeowners trust 9ja Furniture Hub.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="feature-card">
+        <div class="feature-icon gold-bg">🪵</div>
+        <h3 class="feature-title">100% Nigerian Hardwood</h3>
+        <p class="feature-desc">Every piece crafted from sustainably sourced Nigerian hardwoods — Iroko, Mahogany, Teak, and Walnut — by skilled local artisans with decades of experience.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon mahogany-bg">🛡️</div>
+        <h3 class="feature-title">5-Year Craftsmanship Warranty</h3>
+        <p class="feature-desc">We stand behind every joint, finish and fabric. Our 5-year warranty covers manufacturing defects so you can buy with complete confidence.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teak-bg">📐</div>
+        <h3 class="feature-title">Custom Dimensions Available</h3>
+        <p class="feature-desc">Not a standard size? No problem. Our master craftsmen build to your exact specifications — room size, colour, wood species and hardware finish.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon forest-bg">🚚</div>
+        <h3 class="feature-title">Nationwide White-Glove Delivery</h3>
+        <p class="feature-desc">Our delivery team brings furniture directly into your space, assembles every piece, and removes all packaging — in all 36 states and FCT.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon sky-bg">💬</div>
+        <h3 class="feature-title">Free Interior Design Consultation</h3>
+        <p class="feature-desc">Every order above ₦150,000 comes with a complimentary virtual consultation with our certified interior designers to help you choose the perfect pieces.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon violet-bg">💳</div>
+        <h3 class="feature-title">Flexible Payment Plans</h3>
+        <p class="feature-desc">Split your purchase into 3, 6 or 12 monthly instalments with zero interest for qualified buyers. Apply instantly at checkout — approval in minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ════════════════════════════ -->
+<section class="section" id="how-it-works" style="background:var(--cream-alt);">
+  <div class="container container-sm">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-mahogany mb-12">🗺 Your Journey</span>
+      <h2 class="display-3">Shop Smart, Furnish Beautiful</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="grid-2 reveal" style="gap:48px;">
+      <div style="display:flex;flex-direction:column;gap:36px;">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <div class="how-content">
+            <h4>Create Your Account</h4>
+            <p>Sign up in under 2 minutes. Set your location, style preferences and budget to get a personalised catalogue of furniture that fits your taste.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <div class="how-content">
+            <h4>Browse &amp; Customise</h4>
+            <p>Explore 15,000+ products. Use our 3D room planner, choose wood species, finishes and dimensions. Order standard or go fully bespoke.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <div class="how-content">
+            <h4>Secure Checkout</h4>
+            <p>Pay securely with card, bank transfer or USSD. Split into instalments if you prefer. Every naira is protected by our escrow payment system.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-num">4</div>
+          <div class="how-content">
+            <h4>White-Glove Delivery &amp; Assembly</h4>
+            <p>Our team delivers, assembles and arranges your furniture exactly as you envisioned — complete with a final quality inspection before we leave.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right" style="display:flex;align-items:center;justify-content:center;">
+        <div class="card" style="padding:36px;max-width:380px;width:100%;">
+          <div class="badge badge-gold mb-16">🛋️ Order Tracker</div>
+          <h3 style="margin-bottom:20px;font-size:1rem;">Your Order Status</h3>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                <span style="font-size:.82rem;font-weight:600;color:var(--mahogany);">Order Confirmed</span>
+                <span style="font-size:.78rem;font-weight:700;color:var(--forest);">✓ Done</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                <span style="font-size:.82rem;font-weight:600;color:var(--mahogany);">In Production</span>
+                <span style="font-size:.78rem;font-weight:700;color:var(--forest);">✓ Done</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:100%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                <span style="font-size:.82rem;font-weight:600;color:var(--mahogany);">Quality Check</span>
+                <span style="font-size:.78rem;font-weight:700;color:var(--amber);">⏳ Active</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:65%;"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+                <span style="font-size:.82rem;font-weight:600;color:var(--mahogany);">Out for Delivery</span>
+                <span style="font-size:.78rem;font-weight:700;color:var(--text-muted);">Pending</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width:0%;"></div></div>
+            </div>
+          </div>
+          <div class="alert alert-gold mt-24" style="margin-bottom:0;">
+            🚚 Est. Delivery: <strong>2–3 business days</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ STATS STRIP ══════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="grid-4 reveal">
+      <div class="stats-strip-stat">
+        <div class="strip-num" style="color:var(--gold);"><span data-counter="15000">0</span>+</div>
+        <div class="strip-label">Products Listed</div>
+      </div>
+      <div class="stats-strip-stat">
+        <div class="strip-num" style="color:var(--gold-light);"><span data-counter="8500">0</span>+</div>
+        <div class="strip-label">Happy Clients</div>
+      </div>
+      <div class="stats-strip-stat">
+        <div class="strip-num" style="color:var(--gold);">36</div>
+        <div class="strip-label">States Covered</div>
+      </div>
+      <div class="stats-strip-stat">
+        <div class="strip-num" style="color:var(--gold-light);"><span data-counter="120">0</span>+</div>
+        <div class="strip-label">Master Artisans</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ TESTIMONIALS ════════════════════════════ -->
+<section class="section" id="testimonials" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-gold mb-12">⭐ Client Stories</span>
+      <h2 class="display-3">What Our Clients Say</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Ordered a complete living room set for my new house in Lekki. The mahogany sofa set is absolutely stunning — quality is world-class. Delivery team was professional and careful."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--gold),var(--amber));">A</div>
+          <div>
+            <div class="testimonial-name">Adaeze Okonkwo</div>
+            <div class="testimonial-role">Homeowner · Lagos Island</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Furnished our entire Abuja head office — boardroom, reception and 30 individual offices. 9ja Furniture Hub handled everything flawlessly. The CEO desk alone gets daily compliments!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--teak),var(--mahogany));">E</div>
+          <div>
+            <div class="testimonial-name">Emeka Chukwu</div>
+            <div class="testimonial-role">CEO · Tech Startup, Abuja</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My custom kitchen cabinets were built exactly to spec — every millimetre perfect. The iroko wood finish with marble countertop is exactly what I saw on Pinterest but couldn't find anywhere in Kano."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,var(--forest),#1a3a15);">H</div>
+          <div>
+            <div class="testimonial-name">Hauwa Musa</div>
+            <div class="testimonial-role">Interior Designer · Kano</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA BAND ═════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <span class="badge badge-gold mb-16">🛋️ Nigeria's Premier Furniture Hub</span>
+      <h2 class="display-3" style="color:#fff;font-size:clamp(1.9rem,3.2vw,2.8rem);">
+        Ready to Transform Your Space?
+      </h2>
+      <p>Join 8,500+ satisfied Nigerians who've elevated their homes and offices with 9ja Furniture Hub.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="signup.html" class="btn btn-gold btn-lg">Create Free Account</a>
+        <a href="login.html"  class="btn btn-outline-white btn-lg">Sign In</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACT ══════════════════════════════════ -->
+<section class="section-sm" id="contact" style="background:var(--bg-alt);">
+  <div class="container container-sm">
+    <div class="section-title text-center reveal">
+      <span class="badge badge-mahogany mb-12">📬 Get in Touch</span>
+      <h2 class="display-4">Contact Our Team</h2>
+      <p>Need a custom quote, bulk order, or interior design consultation? We're here for you.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-body">
+        <form id="contactForm">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">First Name <span class="req">*</span></label>
+              <input type="text" name="firstName" class="form-control" placeholder="Amara"
+                data-validate="required" data-label="First Name"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name <span class="req">*</span></label>
+              <input type="text" name="lastName" class="form-control" placeholder="Okafor"
+                data-validate="required" data-label="Last Name"/>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Email <span class="req">*</span></label>
+              <input type="email" name="email" class="form-control" placeholder="amara@example.com"
+                data-validate="required|email" data-label="Email"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" name="phone" class="form-control" placeholder="080 0000 0000"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Enquiry Type <span class="req">*</span></label>
+            <select name="subject" class="form-control form-select" data-validate="required" data-label="Enquiry">
+              <option value="">Select enquiry type…</option>
+              <option>Home Furniture Order</option>
+              <option>Office Furniture Order</option>
+              <option>Kitchen Cabinet Quote</option>
+              <option>Bulk/Corporate Order</option>
+              <option>Interior Design Consultation</option>
+              <option>Delivery Enquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message <span class="req">*</span></label>
+            <textarea name="message" class="form-control" rows="4"
+              placeholder="Tell us about your project, preferred dimensions, wood species, or budget range…"
+              data-validate="required" data-label="Message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold w-full">Send Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand navbar-brand">
+          <div class="navbar-logo footer-logo">🪑</div>
+          <span class="navbar-name footer-name">9ja Furniture <span>Hub</span><small>Nigeria's Finest</small></span>
+        </div>
+        <p class="footer-desc">Nigeria's premier furniture marketplace — connecting master artisans with discerning homeowners and businesses across all 36 states. Quality crafted, delivered with care.</p>
+        <div class="footer-social">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="WhatsApp">💬</a>
+          <a href="#" title="X / Twitter">𝕏</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Collections</div>
+        <ul class="footer-links">
+          <li><a href="#home-section">Home Furniture</a></li>
+          <li><a href="#office-section">Office Furniture</a></li>
+          <li><a href="#kitchen-section">Kitchen Cabinets</a></li>
+          <li><a href="#outdoor-section">Outdoor Furniture</a></li>
+          <li><a href="#luxury-section">Luxury Collection</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="#features">Why Choose Us</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#states-section">Delivery Locations</a></li>
+          <li><a href="signup.html">Create Account</a></li>
+          <li><a href="dashboard.html">My Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Support</div>
+        <ul class="footer-links">
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 9ja Furniture Hub. All rights reserved. Made with ❤️ for Nigeria.</span>
+      <span>🔒 Secured · NDPR Compliant · Escrow Protected Payments</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+<script src="js/supabase.js"></script>
+<script>
+const NIGERIAN_STATES = [
+  'Abia','Adamawa','Akwa Ibom','Anambra','Bauchi','Bayelsa','Benue','Borno',
+  'Cross River','Delta','Ebonyi','Edo','Ekiti','Enugu','FCT – Abuja','Gombe',
+  'Imo','Jigawa','Kaduna','Kano','Katsina','Kebbi','Kogi','Kwara','Lagos',
+  'Nasarawa','Niger','Ogun','Ondo','Osun','Oyo','Plateau','Rivers','Sokoto',
+  'Taraba','Yobe','Zamfara'
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Render states grid
+  const grid = document.getElementById('statesGrid');
+  if (grid) {
+    grid.innerHTML = NIGERIAN_STATES.map(s =>
+      `<div onclick="window._toast.show('${s} — delivery available. 2–5 business days.','info')"
+        style="padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);
+          font-size:.82rem;font-weight:600;color:var(--mahogany);cursor:pointer;
+          transition:var(--transition);background:var(--surface);"
+        onmouseenter="this.style.borderColor='var(--gold)';this.style.background='var(--gold-pale)'"
+        onmouseleave="this.style.borderColor='var(--border)';this.style.background='var(--surface)'">
+        📍 ${s}
+      </div>`
+    ).join('');
+  }
+
+  // Contact form
+  const form = document.getElementById('contactForm');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const result = FormValidator.validate(form);
+    if (!result.isValid) { FormValidator.showErrors(form, result.errors); return; }
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    try {
+      await ContactService.send({
+        firstName: new FormData(form).get('firstName'),
+        lastName:  new FormData(form).get('lastName'),
+        email:     new FormData(form).get('email'),
+        subject:   new FormData(form).get('subject'),
+        message:   new FormData(form).get('message')
+      });
+      window._toast.show('Enquiry sent! We\'ll get back to you within 24 hours.', 'success');
+      form.reset();
+    } catch (err) {
+      window._toast.show('Could not send message. Please try again.', 'error');
+    } finally {
+      btn.textContent = 'Send Enquiry →'; btn.disabled = false;
+    }
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+});
+
+function scrollToSection(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+function filterProducts(filter, section) {
+  const tabs = document.querySelectorAll(`#${section}-section .section-tab`);
+  tabs.forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  window._toast.show(`Showing ${filter === 'all' ? 'all' : filter} ${section} products…`, 'info', 2000);
+}
+
+function toggleWishlist(btn) {
+  const isLiked = btn.textContent === '❤️';
+  btn.textContent = isLiked ? '🤍' : '❤️';
+  window._toast.show(isLiked ? 'Removed from wishlist' : 'Added to wishlist ❤️', isLiked ? 'info' : 'success', 2000);
+}
+
+let cartItems = JSON.parse(localStorage.getItem('9ja_cart') || '[]');
+function addToCart(name, price) {
+  cartItems.push({ name, price });
+  localStorage.setItem('9ja_cart', JSON.stringify(cartItems));
+  document.getElementById('cartCount').textContent = cartItems.length;
+  window._toast.show(`${name} added to cart 🛒`, 'success');
+}
+// Restore cart count
+document.addEventListener('DOMContentLoaded', () => {
+  const cnt = document.getElementById('cartCount');
+  if (cnt) cnt.textContent = cartItems.length;
+});
+</script>
+</body>
+</html>

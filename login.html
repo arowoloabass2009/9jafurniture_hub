@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sign In — 9ja Furniture Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+</head>
+<body>
+<div class="auth-root">
+
+  <!-- ══ Left Visual Panel ═════════════════════════════════ -->
+  <div class="auth-visual">
+    <div class="furniture-symbols" aria-hidden="true">
+      <span class="furn-sym" style="font-size:6rem;top:8%;left:6%;--dur:7s;--del:0s;">🛋️</span>
+      <span class="furn-sym" style="font-size:3.5rem;top:26%;right:10%;--dur:5s;--del:1.2s;">🪑</span>
+      <span class="furn-sym" style="font-size:4rem;top:52%;left:8%;--dur:8s;--del:0.5s;">🛏️</span>
+      <span class="furn-sym" style="font-size:2.5rem;top:70%;right:14%;--dur:6s;--del:2s;">🪵</span>
+      <span class="furn-sym" style="font-size:3rem;bottom:14%;left:18%;--dur:7s;--del:1s;">🍽️</span>
+      <span class="furn-sym" style="font-size:2rem;top:40%;left:58%;--dur:9s;--del:3s;">🗄️</span>
+      <span class="furn-sym" style="font-size:2.8rem;top:18%;left:40%;--dur:6s;--del:1.8s;">📚</span>
+    </div>
+
+    <div class="auth-visual-brand">
+      <a href="index.html">
+        <div class="auth-visual-logo">🪑</div>
+        <div>
+          <div class="auth-visual-name">9ja Furniture Hub<small>Nigeria's Premier Marketplace</small></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="auth-visual-content">
+      <div class="auth-visual-badge">👋 Welcome Back</div>
+      <h1 class="auth-visual-title">
+        Your Dream<br/>
+        <span>Furniture</span><br/>
+        Awaits You
+      </h1>
+      <p class="auth-visual-desc">Your cart, wishlist, orders, and personalised recommendations are waiting. Sign back in and continue building your perfect space.</p>
+
+      <div class="auth-stats-grid">
+        <div class="auth-stat-box">
+          <div class="auth-stat-box-num" style="color:var(--gold);">15K+</div>
+          <div class="auth-stat-box-label">Products</div>
+        </div>
+        <div class="auth-stat-box">
+          <div class="auth-stat-box-num" style="color:var(--gold-light);">8,500+</div>
+          <div class="auth-stat-box-label">Happy Clients</div>
+        </div>
+        <div class="auth-stat-box">
+          <div class="auth-stat-box-num" style="color:var(--gold);">36</div>
+          <div class="auth-stat-box-label">States Covered</div>
+        </div>
+        <div class="auth-stat-box">
+          <div class="auth-stat-box-num" style="color:var(--gold-light);">5yr</div>
+          <div class="auth-stat-box-label">Warranty</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-bottom-strip">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span>Secure Sign-In · NDPR Compliant · Escrow Protected Payments</span>
+    </div>
+  </div>
+
+  <!-- ══ Right Form Panel ═══════════════════════════════════ -->
+  <div class="auth-form-panel">
+    <div class="auth-form-box">
+      <div class="auth-form-header">
+        <span class="badge badge-gold mb-12">🔐 Secure Sign In</span>
+        <h2>Sign In to Your Account</h2>
+        <p>Access your orders, wishlist and personalised furniture dashboard.</p>
+      </div>
+
+      <!-- Error alert -->
+      <div class="alert alert-danger" id="loginError" style="display:none;">
+        <span>⚠</span><span id="loginErrorMsg">Invalid email or password.</span>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+            <input type="email" name="email" class="form-control"
+              placeholder="your@email.com"
+              data-validate="required|email" data-label="Email" autocomplete="email"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" style="display:flex;align-items:center;justify-content:space-between;">
+            <span>Password <span class="req">*</span></span>
+            <a href="#" style="font-size:.8rem;color:var(--amber);font-weight:700;"
+               onclick="showForgotPw(event)">Forgot password?</a>
+          </label>
+          <div class="input-wrap" style="position:relative;">
+            <span class="input-icon">🔒</span>
+            <input type="password" name="password" id="loginPassword" class="form-control"
+              placeholder="Your password"
+              data-validate="required" data-label="Password" autocomplete="current-password"/>
+            <button type="button" data-toggle-pw="loginPassword"
+              style="position:absolute;right:14px;top:50%;transform:translateY(-50%);
+                background:none;border:none;cursor:pointer;font-size:1rem;">👁</button>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:28px;">
+          <label class="check-label">
+            <input type="checkbox" id="rememberMe"/>
+            <span>Keep me signed in on this device</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-gold w-full btn-lg" id="loginBtn">
+          Sign In →
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>or continue as</span></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <button class="social-btn" onclick="setDemo('buyer')" style="flex-direction:column;padding:14px 8px;gap:6px;">
+          <span style="font-size:1.4rem;">🛒</span>
+          <span style="font-size:.75rem;font-weight:700;">Buyer</span>
+        </button>
+        <button class="social-btn" onclick="setDemo('business')" style="flex-direction:column;padding:14px 8px;gap:6px;">
+          <span style="font-size:1.4rem;">🏢</span>
+          <span style="font-size:.75rem;font-weight:700;">Business</span>
+        </button>
+        <button class="social-btn" onclick="setDemo('designer')" style="flex-direction:column;padding:14px 8px;gap:6px;">
+          <span style="font-size:1.4rem;">🎨</span>
+          <span style="font-size:.75rem;font-weight:700;">Designer</span>
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="signup.html">Create one free →</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /auth-root -->
+
+<!-- Forgot Password Modal -->
+<div id="forgotPwModal" style="display:none;position:fixed;inset:0;background:rgba(59,26,8,.6);
+  z-index:2000;align-items:center;justify-content:center;">
+  <div style="padding:40px;border-radius:var(--radius-lg);max-width:440px;width:90%;
+    background:#fff;box-shadow:var(--shadow-lg);">
+    <h3 style="margin-bottom:10px;font-size:1.2rem;color:var(--mahogany);">Reset Your Password</h3>
+    <p style="font-size:.9rem;color:var(--text-soft);margin-bottom:24px;">Enter your email and we'll send you a reset link.</p>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input type="email" id="resetEmail" class="form-control" placeholder="your@email.com"/>
+    </div>
+    <div style="display:flex;gap:12px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="closeForgotPw()">Cancel</button>
+      <button class="btn btn-gold" style="flex:1;" onclick="sendReset()">Send Reset Link</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+<script src="js/supabase.js"></script>
+<script>
+function setDemo(role) {
+  const map = { buyer:'buyer@demo.9jafurniture.ng', business:'business@demo.9jafurniture.ng', designer:'designer@demo.9jafurniture.ng' };
+  document.querySelector('[name="email"]').value    = map[role] || '';
+  document.querySelector('[name="password"]').value = 'Demo@1234';
+  window._toast.show('Demo credentials filled — press Sign In.', 'info');
+}
+
+function showForgotPw(e) {
+  e.preventDefault();
+  document.getElementById('forgotPwModal').style.display = 'flex';
+}
+function closeForgotPw() {
+  document.getElementById('forgotPwModal').style.display = 'none';
+}
+async function sendReset() {
+  const email = document.getElementById('resetEmail').value.trim();
+  if (!email) { window._toast.show('Please enter your email address.', 'error'); return; }
+  try {
+    const { error } = await _sb.auth.resetPasswordForEmail(email,
+      { redirectTo: window.location.origin + '/login.html' });
+    if (error) throw error;
+    window._toast.show('Password reset link sent to ' + email, 'success');
+    closeForgotPw();
+  } catch (err) {
+    window._toast.show('Could not send reset email: ' + err.message, 'error');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    if (await SupabaseAuth.isLoggedIn()) window.location.href = 'dashboard.html';
+  } catch (e) {}
+
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorDiv = document.getElementById('loginError');
+    const errorMsg = document.getElementById('loginErrorMsg');
+    errorDiv.style.display = 'none';
+
+    const result = FormValidator.validate(form);
+    if (!result.isValid) { FormValidator.showErrors(form, result.errors); return; }
+
+    const fd  = new FormData(form);
+    const btn = document.getElementById('loginBtn');
+    btn.textContent = 'Signing In…';
+    btn.classList.add('btn-loading');
+    btn.disabled = true;
+
+    try {
+      await SupabaseAuth.signIn(fd.get('email'), fd.get('password'));
+      window._toast.show('Welcome back! Redirecting…', 'success');
+      setTimeout(() => { window.location.href = 'security.html'; }, 1200);
+    } catch (err) {
+      errorMsg.textContent = err.message || 'Invalid email or password.';
+      errorDiv.style.display = 'flex';
+      btn.textContent = 'Sign In →';
+      btn.classList.remove('btn-loading');
+      btn.disabled = false;
+    }
+  });
+});
+</script>
+</body>
+</html>

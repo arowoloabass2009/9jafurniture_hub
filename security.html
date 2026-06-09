@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Security Verification — 9ja Furniture Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/security.css"/>
+</head>
+<body>
+
+<!-- Minimal Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo">🪑</div>
+      <span class="navbar-name">9ja Furniture <span>Hub</span><small>Security</small></span>
+    </a>
+    <div class="navbar-actions">
+      <a href="index.html" class="btn btn-ghost btn-sm">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<div class="security-root">
+  <div class="security-card animate-fadeInUp">
+
+    <!-- Card Header -->
+    <div class="security-card-header">
+      <div class="security-icon-wrap">
+        <div class="security-icon" id="securityIcon">🔐</div>
+        <h2>Security Verification</h2>
+        <p>We need to verify your identity to keep your account safe. Choose your preferred verification method below.</p>
+      </div>
+    </div>
+
+    <!-- Card Body -->
+    <div class="security-card-body">
+
+      <!-- Error / Success alerts -->
+      <div id="secAlert" style="display:none;" class="alert alert-danger">
+        <span>⚠</span><span id="secAlertMsg">Incorrect code. Please try again.</span>
+      </div>
+      <div id="secSuccess" style="display:none;" class="alert alert-success">
+        <span>✓</span><span>Identity verified! Redirecting to your profile setup…</span>
+      </div>
+
+      <!-- Step 1: Choose Method -->
+      <div id="step-method">
+        <label class="otp-label">Choose Verification Method</label>
+        <div class="security-methods">
+          <div class="security-method active" onclick="selectMethod(this,'sms')">
+            <div class="security-method-icon">📱</div>
+            <div class="security-method-label">SMS Code</div>
+            <div class="security-method-sub">Sent to your phone</div>
+          </div>
+          <div class="security-method" onclick="selectMethod(this,'email')">
+            <div class="security-method-icon">✉️</div>
+            <div class="security-method-label">Email Code</div>
+            <div class="security-method-sub">Sent to your inbox</div>
+          </div>
+          <div class="security-method" onclick="selectMethod(this,'authenticator')">
+            <div class="security-method-icon">🔑</div>
+            <div class="security-method-label">Authenticator</div>
+            <div class="security-method-sub">Google / Authy app</div>
+          </div>
+          <div class="security-method" onclick="selectMethod(this,'backup')">
+            <div class="security-method-icon">🗝️</div>
+            <div class="security-method-label">Backup Code</div>
+            <div class="security-method-sub">Recovery code</div>
+          </div>
+        </div>
+
+        <label class="security-trusted-device check-label" style="margin-top:0;">
+          <input type="checkbox" id="trustDevice"/>
+          <div>
+            <strong style="display:block;font-size:.88rem;color:var(--mahogany);">Trust this device for 30 days</strong>
+            <span style="font-size:.78rem;color:var(--text-muted);">Skip 2-step verification on this browser</span>
+          </div>
+        </label>
+
+        <button class="btn btn-gold w-full btn-lg" onclick="proceedToOTP()">
+          Send Verification Code →
+        </button>
+      </div>
+
+      <!-- Step 2: Enter OTP -->
+      <div id="step-otp" style="display:none;">
+        <div style="text-align:center;margin-bottom:28px;">
+          <div style="font-size:.9rem;color:var(--text-soft);" id="otpDesc">
+            Enter the 6-digit code sent to your phone
+          </div>
+        </div>
+
+        <label class="otp-label text-center" style="text-align:center;">
+          Enter 6-Digit Verification Code
+        </label>
+        <div class="otp-row" id="otpRow">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+        </div>
+
+        <div class="otp-resend">
+          Didn't receive the code?
+          <span class="otp-timer" id="otpTimer">⏱ Resend in 30s</span>
+          <a id="resendLink" onclick="resendCode()" style="display:none;">Resend Code</a>
+        </div>
+
+        <button class="btn btn-gold w-full btn-lg" id="verifyBtn" onclick="verifyOTP()">
+          Verify &amp; Continue →
+        </button>
+
+        <div style="text-align:center;margin-top:16px;">
+          <a onclick="backToMethod()" style="font-size:.85rem;color:var(--amber);font-weight:600;cursor:pointer;">
+            ← Change verification method
+          </a>
+        </div>
+      </div>
+
+      <!-- Security Tips -->
+      <div class="security-tips">
+        <h4>🛡 Security Tips</h4>
+        <div class="security-tip-item">
+          <div class="security-tip-dot"></div>
+          Never share your verification code with anyone — including 9ja Furniture Hub staff.
+        </div>
+        <div class="security-tip-item">
+          <div class="security-tip-dot"></div>
+          Codes expire after 10 minutes. Request a new one if yours has expired.
+        </div>
+        <div class="security-tip-item">
+          <div class="security-tip-dot"></div>
+          Only trust devices you personally own and use regularly.
+        </div>
+      </div>
+
+    </div><!-- /security-card-body -->
+  </div><!-- /security-card -->
+</div><!-- /security-root -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+<script src="js/supabase.js"></script>
+<script>
+let selectedMethod = 'sms';
+let timerInterval = null;
+// Demo OTP for testing
+const DEMO_OTP = '123456';
+
+function selectMethod(el, method) {
+  document.querySelectorAll('.security-method').forEach(m => m.classList.remove('active'));
+  el.classList.add('active');
+  selectedMethod = method;
+}
+
+function proceedToOTP() {
+  document.getElementById('step-method').style.display = 'none';
+  document.getElementById('step-otp').style.display    = 'block';
+
+  const descs = {
+    sms:           'Enter the 6-digit code sent to your registered phone number.',
+    email:         'Enter the 6-digit code sent to your email address.',
+    authenticator: 'Enter the 6-digit code from your authenticator app.',
+    backup:        'Enter one of your 8-digit backup recovery codes.'
+  };
+  document.getElementById('otpDesc').textContent = descs[selectedMethod] || descs.sms;
+
+  // Auto-focus first input
+  document.querySelector('.otp-input')?.focus();
+  startTimer(30);
+  window._toast.show('Verification code sent!', 'success');
+}
+
+function backToMethod() {
+  clearInterval(timerInterval);
+  document.getElementById('step-otp').style.display    = 'none';
+  document.getElementById('step-method').style.display = 'block';
+  clearOTP();
+}
+
+// OTP input behaviour: auto-advance, backspace
+document.querySelectorAll('.otp-input').forEach((input, idx, all) => {
+  input.addEventListener('input', () => {
+    input.classList.toggle('filled', input.value.length === 1);
+    if (input.value && idx < all.length - 1) all[idx + 1].focus();
+  });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && !input.value && idx > 0) all[idx - 1].focus();
+  });
+  // Paste full OTP
+  input.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const paste = e.clipboardData.getData('text').replace(/\D/g,'').slice(0,6);
+    all.forEach((inp, i) => {
+      inp.value = paste[i] || '';
+      inp.classList.toggle('filled', !!inp.value);
+    });
+    if (paste.length === 6) verifyOTP();
+  });
+});
+
+function clearOTP() {
+  document.querySelectorAll('.otp-input').forEach(i => {
+    i.value = '';
+    i.classList.remove('filled','error-state');
+  });
+}
+
+function getOTPValue() {
+  return Array.from(document.querySelectorAll('.otp-input')).map(i => i.value).join('');
+}
+
+function verifyOTP() {
+  const code = getOTPValue();
+  if (code.length < 6) { window._toast.show('Please enter the full 6-digit code.', 'error'); return; }
+
+  const btn = document.getElementById('verifyBtn');
+  btn.textContent = 'Verifying…'; btn.disabled = true;
+
+  setTimeout(() => {
+    // Demo: accept DEMO_OTP or any 6-digit code for testing
+    if (code === DEMO_OTP || code.length === 6) {
+      document.getElementById('secAlert').style.display   = 'none';
+      document.getElementById('secSuccess').style.display = 'flex';
+      document.getElementById('securityIcon').textContent = '✅';
+      window._toast.show('Identity verified! Setting up your profile…', 'success');
+      clearInterval(timerInterval);
+      setTimeout(() => { window.location.href = 'kyc1.html'; }, 1800);
+    } else {
+      document.querySelectorAll('.otp-input').forEach(i => i.classList.add('error-state'));
+      const errDiv = document.getElementById('secAlert');
+      document.getElementById('secAlertMsg').textContent = 'Incorrect code. Please try again.';
+      errDiv.style.display = 'flex';
+      btn.textContent = 'Verify & Continue →'; btn.disabled = false;
+    }
+  }, 1200);
+}
+
+function startTimer(seconds) {
+  clearInterval(timerInterval);
+  const timerEl   = document.getElementById('otpTimer');
+  const resendEl  = document.getElementById('resendLink');
+  timerEl.style.display  = 'inline-flex';
+  resendEl.style.display = 'none';
+  let remaining = seconds;
+  timerInterval = setInterval(() => {
+    remaining--;
+    timerEl.textContent = `⏱ Resend in ${remaining}s`;
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      timerEl.style.display  = 'none';
+      resendEl.style.display = 'inline';
+    }
+  }, 1000);
+}
+
+function resendCode() {
+  clearOTP();
+  startTimer(30);
+  window._toast.show('New verification code sent!', 'success');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Check auth
+  try {
+    if (!(await SupabaseAuth.isLoggedIn())) window.location.href = 'login.html';
+  } catch (e) {}
+});
+</script>
+</body>
+</html>

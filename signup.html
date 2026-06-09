@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Create Account — 9ja Furniture Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+</head>
+<body>
+<div class="auth-root">
+
+  <!-- ══ Left Visual Panel ═════════════════════════════════ -->
+  <div class="auth-visual">
+    <div class="furniture-symbols" aria-hidden="true">
+      <span class="furn-sym" style="font-size:5rem;top:10%;left:8%;--dur:6s;--del:0s;">🛋️</span>
+      <span class="furn-sym" style="font-size:3rem;top:22%;right:12%;--dur:7s;--del:1s;">🪵</span>
+      <span class="furn-sym" style="font-size:4rem;top:48%;left:5%;--dur:5s;--del:2s;">🏠</span>
+      <span class="furn-sym" style="font-size:2.5rem;top:66%;right:8%;--dur:8s;--del:.5s;">🍳</span>
+      <span class="furn-sym" style="font-size:3.5rem;bottom:18%;left:15%;--dur:6s;--del:1.5s;">🖥️</span>
+      <span class="furn-sym" style="font-size:2rem;top:36%;left:52%;--dur:9s;--del:2.5s;">🛏️</span>
+      <span class="furn-sym" style="font-size:2.8rem;top:80%;right:30%;--dur:7s;--del:1.2s;">🪑</span>
+    </div>
+
+    <div class="auth-visual-brand">
+      <a href="index.html">
+        <div class="auth-visual-logo">🪑</div>
+        <div>
+          <div class="auth-visual-name">9ja Furniture Hub<small>Nigeria's Premier Marketplace</small></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="auth-visual-content">
+      <div class="auth-visual-badge">🎉 Join 8,500+ Satisfied Clients</div>
+      <h1 class="auth-visual-title">
+        Create Your<br/>
+        <span>Perfect</span><br/>
+        Living Space
+      </h1>
+      <p class="auth-visual-desc">Register for free and unlock Nigeria's largest furniture catalogue, custom order capabilities, interior design consultation and nationwide delivery tracking.</p>
+
+      <div class="auth-features">
+        <div class="auth-feature">
+          <div class="auth-feature-icon">🪵</div>
+          <div class="auth-feature-text">
+            <strong>15,000+ Premium Products</strong>
+            <span>Home, office, kitchen and outdoor collections</span>
+          </div>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon">📐</div>
+          <div class="auth-feature-text">
+            <strong>Custom Build Options</strong>
+            <span>Any dimension, wood species, and finish</span>
+          </div>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon">🚚</div>
+          <div class="auth-feature-text">
+            <strong>Nationwide White-Glove Delivery</strong>
+            <span>All 36 states + FCT with assembly included</span>
+          </div>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon">🛡️</div>
+          <div class="auth-feature-text">
+            <strong>5-Year Craftsmanship Warranty</strong>
+            <span>Full cover on every product you purchase</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-bottom-strip">
+      <span style="font-size:1.2rem;">🔒</span>
+      <span>Free Account · No Card Required · NDPR Compliant</span>
+    </div>
+  </div>
+
+  <!-- ══ Right Form Panel ═══════════════════════════════════ -->
+  <div class="auth-form-panel">
+    <div class="auth-form-box">
+      <div class="auth-form-header">
+        <span class="badge badge-gold mb-12">Free Account · No Card Required</span>
+        <h2>Create Your Account</h2>
+        <p>Join Nigeria's premier furniture marketplace in under 2 minutes.</p>
+      </div>
+
+      <!-- Role Selection -->
+      <div class="form-group">
+        <label class="form-label">I am a… <span class="req">*</span></label>
+        <div class="role-cards" id="roleCards">
+          <label class="role-card" onclick="selectRole(this,'buyer')">
+            <input type="radio" name="role" value="buyer"/>
+            <div class="role-card-icon">🛒</div>
+            <div class="role-card-label">Buyer</div>
+            <div class="role-card-sub">Home / Personal</div>
+          </label>
+          <label class="role-card" onclick="selectRole(this,'business')">
+            <input type="radio" name="role" value="business"/>
+            <div class="role-card-icon">🏢</div>
+            <div class="role-card-label">Business</div>
+            <div class="role-card-sub">Corporate / Bulk</div>
+          </label>
+          <label class="role-card" onclick="selectRole(this,'designer')">
+            <input type="radio" name="role" value="designer"/>
+            <div class="role-card-icon">🎨</div>
+            <div class="role-card-label">Designer</div>
+            <div class="role-card-sub">Interior / Architect</div>
+          </label>
+        </div>
+      </div>
+
+      <form id="signupForm">
+        <input type="hidden" name="role" id="roleInput" value=""/>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label">First Name <span class="req">*</span></label>
+            <input type="text" name="firstName" class="form-control" placeholder="Amara"
+              data-validate="required" data-label="First Name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name <span class="req">*</span></label>
+            <input type="text" name="lastName" class="form-control" placeholder="Okafor"
+              data-validate="required" data-label="Last Name"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+            <input type="email" name="email" class="form-control"
+              placeholder="amara@example.com"
+              data-validate="required|email" data-label="Email"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Phone Number <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">📱</span>
+            <input type="tel" name="phone" class="form-control"
+              placeholder="080 0000 0000"
+              data-validate="required" data-label="Phone"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">State of Residence <span class="req">*</span></label>
+          <select name="state" class="form-control form-select"
+            data-validate="required" data-label="State">
+            <option value="">Select your state…</option>
+            <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option>
+            <option>Anambra</option><option>Bauchi</option><option>Bayelsa</option>
+            <option>Benue</option><option>Borno</option><option>Cross River</option>
+            <option>Delta</option><option>Ebonyi</option><option>Edo</option>
+            <option>Ekiti</option><option>Enugu</option><option>FCT – Abuja</option>
+            <option>Gombe</option><option>Imo</option><option>Jigawa</option>
+            <option>Kaduna</option><option>Kano</option><option>Katsina</option>
+            <option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+            <option>Lagos</option><option>Nasarawa</option><option>Niger</option>
+            <option>Ogun</option><option>Ondo</option><option>Osun</option>
+            <option>Oyo</option><option>Plateau</option><option>Rivers</option>
+            <option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+            <option>Zamfara</option>
+          </select>
+        </div>
+
+        <!-- Business-specific fields -->
+        <div id="businessFields" style="display:none;">
+          <div class="form-group">
+            <label class="form-label">Business / Organisation Name</label>
+            <input type="text" name="businessName" class="form-control"
+              placeholder="e.g. Okafor Interiors Ltd"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password <span class="req">*</span></label>
+          <div class="input-wrap" style="position:relative;">
+            <span class="input-icon">🔒</span>
+            <input type="password" name="password" id="password" class="form-control"
+              placeholder="Min. 8 characters"
+              data-validate="required|password" data-label="Password"/>
+            <button type="button" data-toggle-pw="password"
+              style="position:absolute;right:14px;top:50%;transform:translateY(-50%);
+                background:none;border:none;cursor:pointer;font-size:1rem;">👁</button>
+          </div>
+          <div class="pw-strength">
+            <div class="pw-strength-segs">
+              <div class="pw-strength-seg"></div>
+              <div class="pw-strength-seg"></div>
+              <div class="pw-strength-seg"></div>
+              <div class="pw-strength-seg"></div>
+              <div class="pw-strength-seg"></div>
+            </div>
+            <div class="pw-strength-label">Enter a password</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="check-label">
+            <input type="checkbox" id="termsCheck"/>
+            <span>I agree to the
+              <a href="#" style="color:var(--amber);font-weight:700;">Terms of Use</a> and
+              <a href="#" style="color:var(--amber);font-weight:700;">Privacy Policy</a>.
+              I consent to 9ja Furniture Hub processing my data to provide personalised services.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-gold w-full btn-lg" id="signupBtn">
+          Create Free Account →
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in here →</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /auth-root -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+<script src="js/supabase.js"></script>
+<script>
+let selectedRole = '';
+
+function selectRole(card, role) {
+  document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedRole = role;
+  document.getElementById('roleInput').value = role;
+  document.getElementById('businessFields').style.display = (role === 'business') ? 'block' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('businessFields').style.display = 'none';
+
+  document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    if (!selectedRole) {
+      window._toast.show('Please select your account type.', 'error'); return;
+    }
+    if (!document.getElementById('termsCheck').checked) {
+      window._toast.show('Please agree to the Terms and Privacy Policy to continue.', 'error'); return;
+    }
+
+    const result = FormValidator.validate(form);
+    if (!result.isValid) { FormValidator.showErrors(form, result.errors); return; }
+
+    const fd  = new FormData(form);
+    const btn = document.getElementById('signupBtn');
+    btn.textContent = 'Creating Account…';
+    btn.classList.add('btn-loading');
+    btn.disabled = true;
+
+    try {
+      await SupabaseAuth.signUp({
+        firstName:    fd.get('firstName'),
+        lastName:     fd.get('lastName'),
+        email:        fd.get('email'),
+        password:     fd.get('password'),
+        phone:        fd.get('phone') || null,
+        role:         selectedRole,
+        state:        fd.get('state') || null,
+        businessName: fd.get('businessName') || null,
+      });
+      window._toast.show('Account created! Let\'s verify your identity…', 'success');
+      setTimeout(() => { window.location.href = 'security.html'; }, 1500);
+    } catch (err) {
+      window._toast.show('Sign-up failed: ' + err.message, 'error');
+      btn.textContent = 'Create Free Account →';
+      btn.classList.remove('btn-loading');
+      btn.disabled = false;
+    }
+  });
+});
+</script>
+</body>
+</html>

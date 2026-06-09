@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Profile Setup · Step 2 — 9ja Furniture Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/kyc.css"/>
+</head>
+<body class="kyc-root">
+
+<!-- ══ Navbar ══════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      <div class="navbar-logo">🪑</div>
+      <span class="navbar-name">9ja Furniture <span>Hub</span><small>Profile Setup</small></span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <a href="kyc1.html" class="btn btn-outline btn-sm">← Step 1</a>
+      <button class="btn btn-primary btn-sm" onclick="SupabaseAuth.signOut()">Sign Out</button>
+    </div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══ Page Header ═════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="container">
+    <span class="badge badge-gold mb-16">🎨 Step 2 of 2 — Style Profile &amp; Final Review</span>
+    <h1 class="display-2">Almost There!</h1>
+    <p class="lead">Tell us your design preferences and review your details — then your personalised furniture showroom goes live instantly.</p>
+  </div>
+</div>
+
+<!-- ══ KYC Layout ══════════════════════════════════════════ -->
+<div class="kyc-layout container">
+
+  <!-- Sidebar -->
+  <aside class="kyc-sidebar">
+    <div class="kyc-progress-card">
+      <h3>Setup Progress</h3>
+      <div class="kyc-overall-row">
+        <div class="progress-track" style="flex:1;">
+          <div class="progress-fill" id="kycProgress" style="width:60%;"></div>
+        </div>
+        <span class="kyc-overall-pct" id="kycPct">60%</span>
+      </div>
+      <div class="kyc-steps-list">
+        <div class="kyc-step-item">
+          <div class="kyc-step-dot done" id="kdot-1">✓</div>
+          <div><div class="kyc-step-title">Personal Details</div><div class="kyc-step-sub">Completed ✓</div></div>
+        </div>
+        <div class="kyc-step-item">
+          <div class="kyc-step-dot done" id="kdot-2">✓</div>
+          <div><div class="kyc-step-title">Delivery Profile</div><div class="kyc-step-sub">Completed ✓</div></div>
+        </div>
+        <div class="kyc-step-item">
+          <div class="kyc-step-dot done" id="kdot-3">✓</div>
+          <div><div class="kyc-step-title">Identity Document</div><div class="kyc-step-sub">Completed ✓</div></div>
+        </div>
+        <div class="kyc-step-item">
+          <div class="kyc-step-dot active" id="kdot-4">4</div>
+          <div><div class="kyc-step-title">Style Preferences</div><div class="kyc-step-sub">Design taste &amp; budget</div></div>
+        </div>
+        <div class="kyc-step-item">
+          <div class="kyc-step-dot pending" id="kdot-5">5</div>
+          <div><div class="kyc-step-title">Review &amp; Activate</div><div class="kyc-step-sub">Final confirmation</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="kyc-info-card">
+      <h4>🎉 Almost Done!</h4>
+      <p>Complete this final step to unlock your full personalised dashboard — with curated product recommendations, exclusive member pricing, and priority access to new collections.</p>
+      <div class="kyc-security-badges">
+        <span>🛋 Personalised</span>
+        <span>💎 Member Pricing</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="kyc-main">
+
+    <!-- ── Section 4: Style Preferences ─────────────────── -->
+    <div class="kyc-section active" id="kyc-section-4">
+      <div class="kyc-section-header">
+        <div class="kyc-section-num">04</div>
+        <div>
+          <h2>Style &amp; Design Preferences</h2>
+          <p>Help our AI curate a personalised furniture catalogue just for you. Choose your aesthetic, favourite rooms and budget.</p>
+        </div>
+      </div>
+      <div class="kyc-form-card">
+        <form id="kycForm4">
+
+          <div class="form-group">
+            <label class="form-label">Primary Style Preferences (select all that apply) <span class="req">*</span></label>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;">
+              <label class="doc-type-card" onclick="this.classList.toggle('selected')">
+                <div class="doc-type-inner"><span>🏛️</span><strong>Contemporary</strong><small>Clean &amp; modern lines</small></div>
+              </label>
+              <label class="doc-type-card" onclick="this.classList.toggle('selected')">
+                <div class="doc-type-inner"><span>🪵</span><strong>Traditional</strong><small>Nigerian heritage</small></div>
+              </label>
+              <label class="doc-type-card" onclick="this.classList.toggle('selected')">
+                <div class="doc-type-inner"><span>✨</span><strong>Minimalist</strong><small>Less is more</small></div>
+              </label>
+              <label class="doc-type-card" onclick="this.classList.toggle('selected')">
+                <div class="doc-type-inner"><span>💎</span><strong>Luxury</strong><small>Premium &amp; opulent</small></div>
+              </label>
+              <label class="doc-type-card" onclick="this.classList.toggle('selected')">
+                <div class="doc-type-inner"><span>🌿</span><strong>Rustic</strong><small>Natural &amp; organic</small></div>
+              </label>
+              <label class="doc-type-card" onclick="this.classList.toggle('selected')">
+                <div class="doc-type-inner"><span>⚙️</span><strong>Industrial</strong><small>Urban &amp; bold</small></div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Which rooms are you furnishing? (select all that apply)</label>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px;">
+              <label class="check-label"><input type="checkbox" name="room" value="living"/> Living Room</label>
+              <label class="check-label"><input type="checkbox" name="room" value="bedroom"/> Bedroom</label>
+              <label class="check-label"><input type="checkbox" name="room" value="dining"/> Dining Room</label>
+              <label class="check-label"><input type="checkbox" name="room" value="kitchen"/> Kitchen</label>
+              <label class="check-label"><input type="checkbox" name="room" value="office"/> Home Office</label>
+              <label class="check-label"><input type="checkbox" name="room" value="outdoor"/> Outdoor / Garden</label>
+              <label class="check-label"><input type="checkbox" name="room" value="kids"/> Kids' Room</label>
+              <label class="check-label"><input type="checkbox" name="room" value="study"/> Study / Library</label>
+              <label class="check-label"><input type="checkbox" name="room" value="entire"/> Entire Home</label>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Preferred Wood Finish</label>
+              <select name="woodFinish" class="form-control form-select">
+                <option value="">No preference</option>
+                <option>Natural Mahogany</option>
+                <option>Dark Walnut</option>
+                <option>Light Teak</option>
+                <option>Ebony Black</option>
+                <option>White / Gloss White</option>
+                <option>Oak / Light Wood</option>
+                <option>Custom — I'll specify later</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Upholstery Preference</label>
+              <select name="upholstery" class="form-control form-select">
+                <option value="">No preference</option>
+                <option>Genuine Leather</option>
+                <option>Premium Fabric</option>
+                <option>Velvet</option>
+                <option>Linen / Cotton Blend</option>
+                <option>Faux / Vegan Leather</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label">Project Timeline</label>
+              <select name="timeline" class="form-control form-select">
+                <option value="">Select timeline…</option>
+                <option>Immediate (within 2 weeks)</option>
+                <option>1 month</option>
+                <option>2–3 months</option>
+                <option>3–6 months</option>
+                <option>Just browsing / planning</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Total Budget (optional)</label>
+              <select name="totalBudget" class="form-control form-select">
+                <option value="">Prefer not to say</option>
+                <option>Under ₦100,000</option>
+                <option>₦100,000 – ₦300,000</option>
+                <option>₦300,000 – ₦700,000</option>
+                <option>₦700,000 – ₦1,500,000</option>
+                <option>₦1,500,000 – ₦5,000,000</option>
+                <option>Above ₦5,000,000</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Special Requests or Notes</label>
+            <textarea name="specialNotes" class="form-control" rows="3"
+              placeholder="Any specific requirements — custom dimensions, accessibility needs, matching existing furniture, colour scheme…"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Where did you first discover 9ja Furniture Hub?</label>
+            <select name="discoverySource" class="form-control form-select">
+              <option value="">Select…</option>
+              <option>Instagram</option>
+              <option>Facebook</option>
+              <option>Friend / Family Referral</option>
+              <option>Interior Designer Recommendation</option>
+              <option>Google Search</option>
+              <option>WhatsApp</option>
+              <option>TV / Radio Advertisement</option>
+              <option>Trade Fair / Exhibition</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="kyc-nav">
+            <button type="button" class="btn btn-outline" onclick="prevSection2(4)">← Back</button>
+            <button type="button" class="btn btn-gold" onclick="nextSection2(4)">Review &amp; Finish →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── Section 5: Review & Submit ───────────────────── -->
+    <div class="kyc-section" id="kyc-section-5">
+      <div class="kyc-section-header">
+        <div class="kyc-section-num">05</div>
+        <div>
+          <h2>Review &amp; Activate Account</h2>
+          <p>Review the information below and submit. Our team will verify your profile within 1–2 business hours. You'll receive an SMS and email confirmation.</p>
+        </div>
+      </div>
+      <div class="kyc-form-card">
+
+        <div class="kyc-review-grid">
+          <div class="review-block">
+            <div class="review-block-header">
+              <h4>👤 Personal Details</h4>
+              <a href="kyc1.html" class="btn btn-xs btn-outline">Edit</a>
+            </div>
+            <div class="review-pairs">
+              <div class="review-pair"><span>Full Name</span><strong id="rv-name">—</strong></div>
+              <div class="review-pair"><span>Date of Birth</span><strong id="rv-dob">—</strong></div>
+              <div class="review-pair"><span>Phone</span><strong id="rv-phone">—</strong></div>
+              <div class="review-pair"><span>State of Origin</span><strong id="rv-state">—</strong></div>
+              <div class="review-pair"><span>Nationality</span><strong id="rv-nationality">—</strong></div>
+            </div>
+          </div>
+          <div class="review-block">
+            <div class="review-block-header">
+              <h4>📦 Delivery Profile</h4>
+              <a href="kyc1.html" class="btn btn-xs btn-outline">Edit</a>
+            </div>
+            <div class="review-pairs">
+              <div class="review-pair"><span>Delivery State</span><strong id="rv-dstate">—</strong></div>
+              <div class="review-pair"><span>City</span><strong id="rv-dcity">—</strong></div>
+              <div class="review-pair"><span>Account Type</span><strong id="rv-atype">—</strong></div>
+              <div class="review-pair"><span>Budget Range</span><strong id="rv-budget">—</strong></div>
+            </div>
+          </div>
+          <div class="review-block">
+            <div class="review-block-header">
+              <h4>🪪 Identity</h4>
+              <a href="kyc1.html" class="btn btn-xs btn-outline">Edit</a>
+            </div>
+            <div class="review-pairs">
+              <div class="review-pair"><span>Document Type</span><strong id="rv-idtype">—</strong></div>
+              <div class="review-pair"><span>Document #</span><strong id="rv-idnum">—</strong></div>
+              <div class="review-pair"><span>Front Upload</span><strong id="rv-idfront">Pending</strong></div>
+            </div>
+          </div>
+          <div class="review-block">
+            <div class="review-block-header">
+              <h4>🎨 Style Profile</h4>
+            </div>
+            <div class="review-pairs">
+              <div class="review-pair"><span>Wood Finish</span><strong id="rv-wood">—</strong></div>
+              <div class="review-pair"><span>Timeline</span><strong id="rv-timeline">—</strong></div>
+              <div class="review-pair"><span>Total Budget</span><strong id="rv-totalbudget">—</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="form-group">
+          <label class="check-label">
+            <input type="checkbox" id="finalTerms"/>
+            <span>I confirm all information provided is accurate and true. I agree to
+              <a href="#" style="color:var(--amber);font-weight:700;">Terms of Use</a>,
+              <a href="#" style="color:var(--amber);font-weight:700;">Privacy Policy</a> and
+              consent to identity verification processing under NDPR.</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="check-label">
+            <input type="checkbox" id="marketingConsent"/>
+            <span>I'd like to receive product recommendations, exclusive deals, and new collection alerts via email and SMS.</span>
+          </label>
+        </div>
+
+        <div class="alert alert-gold" style="margin-bottom:24px;">
+          🕐 <strong>Verification Time:</strong> Your profile will be reviewed within 1–2 business hours. You'll receive a confirmation email and SMS once approved.
+        </div>
+
+        <div class="kyc-nav">
+          <button type="button" class="btn btn-outline" onclick="prevSection2(5)">← Back</button>
+          <button type="button" class="btn btn-gold btn-lg" id="submitBtn" onclick="submitKYC()">
+            🎉 Activate My Account →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Success State ─────────────────────────────────── -->
+    <div class="kyc-section" id="kyc-section-success">
+      <div class="kyc-form-card">
+        <div class="kyc-success-wrap">
+          <div class="kyc-success-icon">🎉</div>
+          <h2>Account Submitted!</h2>
+          <p>Your profile has been submitted for verification. Our team will review it within 1–2 business hours. You'll receive an SMS and email confirmation.</p>
+
+          <div class="kyc-success-timeline">
+            <div class="kyc-timeline-step done">
+              <div class="kyc-timeline-dot">✓</div>
+              <div class="kyc-timeline-lbl">Profile Submitted</div>
+            </div>
+            <div class="kyc-timeline-step">
+              <div class="kyc-timeline-dot">👀</div>
+              <div class="kyc-timeline-lbl">Under Review</div>
+            </div>
+            <div class="kyc-timeline-step">
+              <div class="kyc-timeline-dot">✅</div>
+              <div class="kyc-timeline-lbl">Verified</div>
+            </div>
+            <div class="kyc-timeline-step">
+              <div class="kyc-timeline-dot">🛋</div>
+              <div class="kyc-timeline-lbl">Shop Unlocked</div>
+            </div>
+          </div>
+
+          <p style="font-size:.92rem;color:var(--text-soft);">While we verify your account, you can still browse our full catalogue and add items to your wishlist.</p>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
+            <a href="dashboard.html" class="btn btn-gold btn-lg">Go to My Dashboard →</a>
+            <a href="index.html" class="btn btn-outline btn-lg">Browse Furniture</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div><!-- /kyc-layout -->
+
+<footer class="footer" style="margin-top:80px;">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 9ja Furniture Hub. All rights reserved.</span>
+      <span>🔒 All data encrypted and stored securely · NDPR Compliant</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+<script src="js/supabase.js"></script>
+<script>
+let currentSec2 = 4;
+const kycData2 = {};
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await SupabaseAuth.requireAuth('login.html');
+  try {
+    const existing = await KYCService.getMine();
+    if (existing) {
+      // Prefill review panel
+      const s = v => v || '—';
+      document.getElementById('rv-name').textContent        = s(`${existing.first_name || ''} ${existing.last_name || ''}`.trim());
+      document.getElementById('rv-dob').textContent         = s(existing.date_of_birth);
+      document.getElementById('rv-phone').textContent       = s(existing.phone);
+      document.getElementById('rv-state').textContent       = s(existing.state_of_origin);
+      document.getElementById('rv-nationality').textContent = s(existing.nationality);
+      document.getElementById('rv-dstate').textContent      = s(existing.delivery_state);
+      document.getElementById('rv-dcity').textContent       = s(existing.delivery_city);
+      document.getElementById('rv-atype').textContent       = s(existing.account_type);
+      document.getElementById('rv-budget').textContent      = s(existing.budget_range);
+      document.getElementById('rv-idtype').textContent      = s(existing.id_type);
+      document.getElementById('rv-idnum').textContent       = s(existing.id_number);
+      document.getElementById('rv-idfront').textContent     = existing.id_front_url ? 'Uploaded ✓' : 'Pending';
+    }
+  } catch (e) {}
+});
+
+function nextSection2(current) {
+  const form = document.getElementById(`kycForm${current}`);
+  if (form) { new FormData(form).forEach((v, k) => kycData2[k] = v); }
+  // Populate review
+  if (current === 4) {
+    const wood     = document.querySelector('[name="woodFinish"]')?.value;
+    const timeline = document.querySelector('[name="timeline"]')?.value;
+    const budget   = document.querySelector('[name="totalBudget"]')?.value;
+    document.getElementById('rv-wood').textContent        = wood || '—';
+    document.getElementById('rv-timeline').textContent    = timeline || '—';
+    document.getElementById('rv-totalbudget').textContent = budget || '—';
+  }
+  document.getElementById(`kyc-section-${current}`).classList.remove('active');
+  document.getElementById(`kyc-section-${current + 1}`).classList.add('active');
+  currentSec2 = current + 1;
+  updateProgress2();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevSection2(current) {
+  document.getElementById(`kyc-section-${current}`).classList.remove('active');
+  if (current === 4) {
+    window.location.href = 'kyc1.html';
+  } else {
+    document.getElementById(`kyc-section-${current - 1}`).classList.add('active');
+    currentSec2 = current - 1;
+    updateProgress2();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function updateProgress2() {
+  const pct = Math.round((currentSec2 / 5) * 100);
+  document.getElementById('kycProgress').style.width = pct + '%';
+  document.getElementById('kycPct').textContent = pct + '%';
+  [4, 5].forEach(i => {
+    const dot = document.getElementById(`kdot-${i}`);
+    if (!dot) return;
+    if (i < currentSec2)        { dot.className = 'kyc-step-dot done';    dot.textContent = '✓'; }
+    else if (i === currentSec2) { dot.className = 'kyc-step-dot active';  dot.textContent = i; }
+    else                        { dot.className = 'kyc-step-dot pending'; dot.textContent = i; }
+  });
+}
+
+async function submitKYC() {
+  if (!document.getElementById('finalTerms').checked) {
+    window._toast.show('Please confirm the terms and accuracy of your information.', 'error'); return;
+  }
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Submitting…'; btn.disabled = true;
+
+  const form4 = document.getElementById('kycForm4');
+  if (form4) new FormData(form4).forEach((v, k) => kycData2[k] = v);
+
+  const payload = {
+    wood_finish:       kycData2.woodFinish          || null,
+    upholstery:        kycData2.upholstery           || null,
+    project_timeline:  kycData2.timeline             || null,
+    total_budget:      kycData2.totalBudget          || null,
+    special_notes:     kycData2.specialNotes         || null,
+    discovery_source:  kycData2.discoverySource      || null,
+    marketing_consent: document.getElementById('marketingConsent').checked,
+  };
+
+  try {
+    await KYCService.submit(payload);
+    window._toast.show('Profile submitted! Welcome to 9ja Furniture Hub 🎉', 'success');
+    document.getElementById('kyc-section-5').classList.remove('active');
+    document.getElementById('kyc-section-success').classList.add('active');
+    document.getElementById('kycProgress').style.width = '100%';
+    document.getElementById('kycPct').textContent = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (e) {
+    window._toast.show('Could not submit profile. Please try again.', 'error');
+    btn.textContent = '🎉 Activate My Account →'; btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
