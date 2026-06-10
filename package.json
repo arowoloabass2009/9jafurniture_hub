@@ -4,7 +4,7 @@
   "description": "9ja Furniture Hub — Nigeria's Premier Furniture Marketplace",
   "scripts": {
     "dev": "concurrently --kill-others-on-fail --names \"TS,BS\" --prefix-colors \"yellow,cyan\" \"tsc --watch --preserveWatchOutput\" \"browser-sync start --config bs-config.json\"",
-    "build": "tsc",
+    "build:ts": "tsc",
     "start": "browser-sync start --config bs-config.json",
     "watch": "tsc --watch --preserveWatchOutput",
     "serve": "browser-sync start --config bs-config.json"
