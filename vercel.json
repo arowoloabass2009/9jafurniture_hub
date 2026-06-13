@@ -1,25 +1,29 @@
 {
-  "buildCommand": null,
+  "buildCommand": "npm run build",
   "outputDirectory": ".",
-  "installCommand": null,
+  "installCommand": "npm install",
+  "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/login",     "destination": "/login.html" },
-    { "source": "/signup",    "destination": "/signup.html" },
+    { "source": "/login",     "destination": "/login.html"     },
+    { "source": "/signup",    "destination": "/signup.html"    },
     { "source": "/dashboard", "destination": "/dashboard.html" },
-    { "source": "/security",  "destination": "/security.html" },
-    { "source": "/kyc1",      "destination": "/kyc1.html" },
-    { "source": "/kyc2",      "destination": "/kyc2.html" }
+    { "source": "/security",  "destination": "/security.html"  },
+    { "source": "/kyc1",      "destination": "/kyc1.html"      },
+    { "source": "/kyc2",      "destination": "/kyc2.html"      }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options",    "value": "nosniff" },
-        { "key": "X-Frame-Options",           "value": "DENY" },
-        { "key": "X-XSS-Protection",          "value": "1; mode=block" },
-        { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-XSS-Protection",       "value": "1; mode=block" },
+        { "key": "Referrer-Policy",         "value": "strict-origin-when-cross-origin" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-ancestors 'none'; object-src 'none';"
+        }
       ]
     },
     {

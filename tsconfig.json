@@ -5,9 +5,9 @@
     "lib": ["ES2017", "DOM"],
     "outFile": "js/app.js",
     "strict": false,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "skipLibCheck": true,
-    "sourceMap": true
+    "sourceMap": false
   },
   "include": ["js/app.ts"]
 }

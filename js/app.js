@@ -323,4 +323,3 @@ document.addEventListener('DOMContentLoaded', () => {
     g.formatNaira = formatNaira;
     g.animateCounter = animateCounter;
 });
-//# sourceMappingURL=app.js.map
